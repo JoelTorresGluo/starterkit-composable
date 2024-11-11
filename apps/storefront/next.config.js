@@ -6,7 +6,6 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 const nextConfig = {
   images: {
     remotePatterns: [
-      { hostname: 'images.contentstack.io' },
       { hostname: 'images.ctfassets.net' },
       { hostname: 'images.cdn.us-central1.gcp.commercetools.com' },
       {
@@ -21,7 +20,6 @@ const nextConfig = {
   },
   transpilePackages: [
     '@oriuminc/algolia',
-    '@oriuminc/amplience',
     '@oriuminc/base',
     '@oriuminc/chakra',
     '@oriuminc/checkout',
@@ -29,7 +27,6 @@ const nextConfig = {
     '@oriuminc/commerce-generic',
     '@oriuminc/commercetools',
     '@oriuminc/contentful',
-    '@oriuminc/contentstack',
     '@oriuminc/shopify',
     '@oriuminc/store-locator',
     '@oriuminc/templates',

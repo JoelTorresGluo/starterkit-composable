@@ -43,7 +43,6 @@
     "@oriuminc/commerce-generic": "workspace:*",
     "@oriuminc/commercetools": "workspace:*",
     "@oriuminc/contentful": "workspace:*",
-    "@oriuminc/contentstack": "workspace:*",
     "@oriuminc/shopify": "workspace:*",
     "@oriuminc/stripe": "workspace:*",
     "@oriuminc/templates": "workspace:*",
