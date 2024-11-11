@@ -1,0 +1,47 @@
+{
+  "name": "composable-pro-workspace",
+  "version": "0.0.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*",
+    "scripts/*",
+    "vendor/*"
+  ],
+  "scripts": {
+    "prepare": "husky install",
+    "transformFigmaTokens": "cd packages/chakra && pnpm run transformTokens",
+    "prebuild": "pnpm transformFigmaTokens",
+    "postinstall": "pnpm transformFigmaTokens",
+    "build": "turbo run build --filter=./packages/* --filter=./vendor/*",
+    "clean": "rm -rf node_modules && rm -rf **/**/node_modules && rm -rf **/**/.turbo && rm -rf **/**/.next",
+    "rebuild": "pnpm clean && pnpm install && pnpm build",
+    "lint": "turbo run lint",
+    "ts": "turbo run ts",
+    "format": "prettier --write \"**/*.{ts,tsx,md,json}\"",
+    "test": "jest --passWithNoTests"
+  },
+  "dependencies": {
+    "husky": "7.0.4",
+    "lint-staged": "12.4.1",
+    "prettier": "2.7.1",
+    "turbo": "1.8.8"
+  },
+  "devDependencies": {
+    "@babel/preset-typescript": "^7.24.7",
+    "@testing-library/jest-dom": "^6.4.8",
+    "@testing-library/react": "^16.0.0",
+    "@typescript-eslint/eslint-plugin": "^7.18.0",
+    "@types/jest": "^29.5.12",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "ts-node": "10.9.2"
+  },
+  "engines": {
+    "node": "20.x"
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
+  },
+  "packageManager": "pnpm@8.3.1"
+}

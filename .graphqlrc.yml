@@ -1,0 +1,2 @@
+schema: './packages/commercetools/src/types/commercetools-schema.graphql'
+documents: './packages/commercetools/src/**/*.{graphql,js,ts,jsx,tsx}'
