@@ -1,0 +1,11 @@
+{
+  "extends": "tsconfig/react-library.json",
+  "include": ["."],
+  "exclude": [".turbo", "dist", "tmp", "node_modules", "tsconfig.tsbuildinfo"],
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "types": ["node"]
+  }
+}

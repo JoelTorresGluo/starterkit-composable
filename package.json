@@ -1,0 +1,41 @@
+{
+  "name": "@oriuminc/chakra",
+  "version": "3.2.2-canary.1",
+  "license": "SEE LICENSE IN LICENSE.md",
+  "private": true,
+  "sideEffects": false,
+  "scripts": {
+    "transformTokens": "ts-node src/scripts/transformTokens.ts",
+    "theme": "chakra-cli tokens src/index.ts",
+    "theme:watch": "chakra-cli tokens src/index.ts --watch",
+    "test": "pnpm -w run test --selectProjects @oriuminc/chakra",
+    "test:watch": "pnpm -w run test --selectProjects @oriuminc/chakra --watch"
+  },
+  "peerDependencies": {
+    "@chakra-ui/icons": "2.1.1",
+    "@chakra-ui/react": "2.8.2",
+    "@chakra-ui/styled-system": "2.9.1",
+    "@chakra-ui/theme-tools": "2.0.18",
+    "@emotion/react": "11.13.0",
+    "@emotion/styled": "11.13.0",
+    "framer-motion": "6.5.1",
+    "next": "14.2.5",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "react-hook-form": "7.52.1",
+    "react-icons": "5.3.0"
+  },
+  "devDependencies": {
+    "@chakra-ui/cli": "2.4.1",
+    "@oriuminc/eslint-config": "workspace:*",
+    "@types/node": "20.14.14",
+    "@types/react": "18.3.1",
+    "@types/react-dom": "18.3.0",
+    "clean-package": "2.1.1",
+    "tsconfig": "workspace:*"
+  },
+  "dependencies": {
+    "@oriuminc/base": "workspace:*",
+    "ts-node": "10.9.2"
+  }
+}
