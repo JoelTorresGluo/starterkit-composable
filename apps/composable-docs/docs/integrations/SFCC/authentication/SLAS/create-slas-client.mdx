@@ -1,0 +1,127 @@
+---
+sidebar_position: 4
+---
+
+# Create a SLAS client
+
+import React, { useState } from 'react'
+
+## Using the SLAS Admin UI
+
+### Access the SLAS Admin UI
+
+The SLAS Admin UI is accessible at the following URL:
+
+`https://{{short-code}}.api.commercecloud.salesforce.com/shopper/auth-admin/v1/ui/`
+
+### Create a SLAS Client
+
+1. Log in to the SLAS Admin UI using your Account Manager credentials.
+2. From the top navigation, click **Clients**.
+3. Click **Add Client**.
+4. Click **Choose Tenant...** and select a B2C Commerce instance.
+5. Select an app type with the "Which App Type will be used?" field:
+   - Choosing **PWA Kit or SFRA or Mobile** creates a public client (no secret generated).
+   - Choosing **BFF or Web App** creates a private client (secret generated automatically).
+6. Click **Submit**.
+
+## Using SLAS Admin API
+
+### Generate SLAS Admin Token
+
+1. Login to the SLAS Admin UI.
+2. Click **Token** from the top navigation.
+3. Click **Copy Admin Token to Clipboard**.
+
+### Prepare Environment Variables
+
+Using the Admin Token generated in the previous step, set the following environment variables:
+
+```bash
+export "SFCC_ACCESS_TOKEN={{slas_admin_token}}"
+export "SFCC_REALM_ID={{realm_id}}"
+export "SFCC_INSTANCE_ID={{instance_id}}"
+export "SFCC_SCAPI_TENANTID=${SFCC_REALM_ID}_${SFCC_INSTANCE_ID}"
+export "SFCC_SCAPI_SHORTCODE={{shortcode}}"
+```
+
+### Create a SLAS Tenant
+
+SLAS clients are associated to instances via **Tenants**. To create a tenant, use the `tenants` endpoint.
+
+```bash
+curl "https://$SFCC_SCAPI_SHORTCODE.api.commercecloud.salesforce.com/shopper/auth-admin/v1/tenants/$SFCC_SCAPI_TENANTID" \
+--request 'PUT' \
+--header 'Content-Type: application/json' \
+--header "Authorization: Bearer $SFCC_ACCESS_TOKEN" \
+--data-raw '{
+    "instance": "'"$SFCC_SCAPI_TENANTID"'",
+    "description": "Example tenant for SLAS",
+    "merchantName": "Orium Client",
+    "contact": "John Smith",
+    "emailAddress": "test@example.com"
+}'
+```
+
+### Create a SLAS Client
+
+#### Client ID
+
+While the SLAS Admin UI will auto-generate a client ID, when using the SLAS Admin API, you are expected to provide your own client ID (UUID).
+
+Once generated, store it in an environment variable.
+
+```bash
+export SLAS_CLIENT_ID={{client_id}}
+```
+
+#### Client Secret
+
+You must also choose a client secret.
+
+```bash
+export SLAS_CLIENT_SECRET={{client_secret}}
+```
+
+#### Request Body
+
+The SLAS client API requires some unique data in the payload:
+
+- `channels` associate the client with specific SFCC sites.
+- `scopes` determines which SCAPI scopes the client may access
+
+```bash
+curl "https://$SFCC_SCAPI_SHORTCODE.api.commercecloud.salesforce.com/shopper/auth-admin/v1/tenants/$SFCC_SCAPI_TENANTID/clients/$SLAS_CLIENT_ID" \
+--request 'PUT'
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer $SFCC_ACCESS_TOKEN' \
+--data-raw '{
+    "clientId": "'"$SLAS_CLIENT_ID"'",
+    "secret": "'"$SLAS_CLIENT_SECRET"'", # only required if isPrivateClient is true
+    "isPrivateClient": true, # set to false if using public client
+    "name": "Test Client",
+    "channels": [
+        "RefArch",
+        "RefArchGlobal",
+        "SiteGenesis"
+    ],
+    "scopes": [
+        "sfcc.shopper-baskets-orders.rw",
+        "sfcc.shopper-categories",
+        "sfcc.shopper-customers.login",
+        "sfcc.shopper-customers.register",
+        "sfcc.shopper-gift-certificates",
+        "sfcc.shopper-myaccount.rw",
+        "sfcc.shopper-product-search",
+        "sfcc.shopper-productlists",
+        "sfcc.shopper-products",
+        "sfcc.shopper-promotions",
+        "sfcc.shopper-stores"
+    ],
+    "redirectUri": ["http://localhost:3000/callback", "http://example.com/callback"]
+}'
+```
+
+## References
+
+[Create a SLAS Client](https://developer.salesforce.com/docs/commerce/commerce-api/guide/authorization-for-shopper-apis.html#create-a-slas-client)

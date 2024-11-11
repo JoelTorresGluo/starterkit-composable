@@ -1,0 +1,172 @@
+---
+sidebar_position: 1
+---
+
+import Tabs from '@theme/Tabs'
+import TabItem from '@theme/TabItem'
+
+# Using Commerce SDK
+
+## Import the required modules
+
+```ts
+// Import the SDK in TypeScript
+// tsc requires the --esModuleInterop flag for this
+import { Customer, slasHelpers } from 'commerce-sdk'
+```
+
+## Set up Config Object
+
+```ts
+// demo client credentials, if you have access to your own please replace them below.
+// do not store client secret as plaintext. Store it in a secure location.
+const CLIENT_ID = 'da422690-7800-41d1-8ee4-3ce983961078'
+const CLIENT_SECRET = 'D*HHUrgO2%qADp2JTIUi'
+const ORG_ID = 'f_ecom_zzte_053'
+const SHORT_CODE = 'kv7kzm78'
+const SITE_ID = 'RefArch'
+
+// client configuration parameters
+const config = {
+  headers: {},
+  parameters: {
+    clientId: CLIENT_ID,
+    organizationId: ORG_ID,
+    shortCode: SHORT_CODE,
+    siteId: SITE_ID,
+  },
+}
+```
+
+## Get Token
+
+:::note
+
+Each of the below methods support an optional `usid` parameter in case it is known. If omitted, SFCC will generate its own `usid`.
+
+:::
+
+### Using slasHelpers
+
+Commerce SDK provides helpers methods to simplify the token fetching process. This is the preferred method of generating Shopper access tokens.
+
+<Tabs>
+  <TabItem value="guest" label="Guest User">
+    ```ts
+    const guestTokenResponse = await slasHelpers.loginGuestUser(
+        new Customer.ShopperLogin(config),
+        {
+            redirectURI: 'http://localhost:3000/callback',
+            // usid: '' - if known
+        }
+      )
+      .then((guestTokenResponse) => {
+        console.log("Guest Token Response: ", guestTokenResponse);
+        return guestTokenResponse;
+      })
+      .catch(error => console.log("Error fetching token for guest login: ", error));
+    ```
+  </TabItem>
+  <TabItem value="registered" label="Registered B2C User">
+    ```ts
+    const customerTokenResponse = await slasHelpers.loginRegisteredUserB2C(
+        new Customer.ShopperLogin(config),
+        { password: 'a3gaklnin234f!', username: 'test@example.com' },
+        {
+            redirectURI: 'http://localhost:3000/callback',
+            // usid: '' - if known
+        }
+      )
+      .then((customerTokenResponse) => {
+        console.log("Customer Token Response: ", customerTokenResponse);
+        return customerTokenResponse;
+      })
+      .catch(error => console.log("Error fetching token for customer login: ", error));
+    ```
+  </TabItem>
+</Tabs>
+
+### Using Customer.ShopperLogin
+
+Though slasHelpers is preferred, below is an example of fetching a token using the Customer.ShopperLogin client directly.
+
+<Tabs>
+  <TabItem value="guest" label="Guest User">
+    ```ts
+    async function getGuestUserAuthToken(): Promise<Customer.ShopperLogin.TokenResponse> {
+      const credentials = `${CLIENT_ID}:${CLIENT_SECRET}`;
+      const base64data = Buffer.from(credentials).toString("base64");
+      const headers = { Authorization: `Basic ${base64data}` };
+      const client = new Customer.ShopperLogin(clientConfig);
+
+      return await client.getAccessToken({
+        headers,
+        body: {
+          grant_type: "client_credentials",
+        },
+      });
+    }
+
+    getGuestUserAuthToken()
+      .then((shopperToken) =>
+        console.log(`Authorization token: ${shopperToken.access_token}`)
+      )
+      .catch((error) => {
+        console.log(`Error fetching token for the guest user: ${error}`);
+      });
+    ```
+
+  </TabItem>
+  <TabItem value="registered" label="Registered B2C User">
+    ```ts
+    async function getRegisteredShopperToken(): Promise<
+  ShopperToken<ShopperCustomers.Customer>
+> {
+      const credentials = `${username}:${password}`;
+      const buff = Buffer.from(credentials);
+      const base64data = buff.toString("base64");
+      const headers = { Authorization: `Basic ${base64data}` };
+
+      const client = new ShopperCustomers(clientConfig);
+
+      const response = await client.authorizeCustomer(
+        { headers: headers, body: { type: "credentials" } },
+        true
+      );
+      if (!response.ok) {
+        throw new ResponseError(response);
+      }
+      const customerInfo: ShopperCustomers.Customer = await getObjectFromResponse(
+        response
+      );
+
+      return new ShopperToken(
+        customerInfo,
+        stripBearer(response.headers.get("Authorization"))
+      );
+    }
+
+    getRegisteredShopperToken()
+      .then((shopperToken) => {
+        console.log(`Authorization token: ${shopperToken.getAuthToken()}`);
+        console.log(
+          `Customer Info: ${JSON.stringify(
+            shopperToken.getCustomerInfo(),
+            null,
+            2
+          )}`
+        );
+      })
+      .catch((error) => {
+        console.log(`Error fetching token for registered customer: ${error}`);
+      });
+    ```
+
+  </TabItem>
+</Tabs>
+
+### References
+
+- [Commerce SDK Examples](https://github.com/SalesforceCommerceCloud/commerce-sdk/tree/main/examples)
+- [Customer.ShopperLogin](https://salesforcecommercecloud.github.io/commerce-sdk/classes/customer.shopperlogin.html)
+- [slasHelpers](https://salesforcecommercecloud.github.io/commerce-sdk/modules/helpers.html#slashelpers)

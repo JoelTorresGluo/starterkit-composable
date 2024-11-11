@@ -1,0 +1,282 @@
+---
+sidebar_position: 2
+---
+
+import Tabs from '@theme/Tabs'
+import TabItem from '@theme/TabItem'
+
+# Get Order
+
+## Purpose
+
+This endpoint is used to fetch a customer order by order number.
+
+## Example
+
+<Tabs>
+  <TabItem value="commerce-sdk" label="Commerce SDK">
+    ```js
+    const parameters = {
+      locale: "en_CA",
+      orderNo: "ABC10001", // required
+    }
+    const orders = await shopperOrdersClient.getOrder({ parameters });
+    ```
+  </TabItem>
+  <TabItem value="scapi" label="SCAPI">
+    ```http
+    GET /checkout/shopper-orders/v1/organizations/{organizationId}/orders/{orderNo}?siteId=RefArch HTTP/1.1
+    Host: {shortcode}.api.commercecloud.salesforce.com:443
+    ```
+  </TabItem>
+</Tabs>
+
+## Request
+
+### URL
+
+`GET https://{shortCode}.api.commercecloud.salesforce.com/checkout/shopper-orders/{version}/organizations/{organizationId}/orders/{orderNo}?siteId=RefArch`
+
+### Headers
+
+- `Authorization: Bearer {slas_token}`
+
+### URL Parameters
+
+- `shortCode` _string_: A region-specific merchant identifier. **(required)**
+  - Retrieved from Business Manager > Administration > Salesforce Commerce API Settings > Shortcode
+  - Example: `0dnz6oep`
+- `version` _string_: API version identifier. **(required)**
+  - Example: `v1`
+- `organizationId` _string_: The identifier for the organization. **(required)**
+  - Retrieved from Business Manager > Administration > Salesforce Commerce API Settings > organization ID
+- `orderNo` _string_: The ID of the requested order **(required)**
+  - Example: `ABC10001`
+
+### Query Parameters
+
+- `siteId` _string_: The site context of the request. Used to handle site-specific category attribute values. **(required)**
+  - Example: `RefArch`
+- `locale` _string_: The locale of the current request (used for category localization)
+  - Example: `fr_CA`
+
+## Response
+
+<Tabs>
+  <TabItem value="200" label="200">
+  Success
+  ```json
+  {
+    "order-get-response": {
+      "adjustedMerchandizeTotalTax": 30,
+      "adjustedShippingTotalTax": 0.8,
+      "billingAddress": {
+        "address1": "104 Presidential Way",
+        "city": "Woburn",
+        "countryCode": "US",
+        "firstName": "Stephanie",
+        "fullName": "Stephanie Miller",
+        "id": "5f695b6f4bb63cb686483d65a0",
+        "lastName": "Miller",
+        "postalCode": "01801",
+        "stateCode": "MA"
+      },
+      "channelType": "storefront",
+      "confirmationStatus": "not_confirmed",
+      "couponItems": [
+        {
+          "code": "5ties",
+          "couponItemId": "d3f7ae47e5897a6b5d2fd541f0",
+          "statusCode": "applied",
+          "valid": true
+        }
+      ],
+      "createdBy": "Customer",
+      "creationDate": "2019-10-22T12:17:28.341Z",
+      "currency": "USD",
+      "customerInfo": {
+        "customerId": "beQeANXJNsd0xcINsB6cSrobQa",
+        "customerName": "Stephanie Miller",
+        "email": "shopper@salesforce-test.com"
+      },
+      "customerName": "Stephanie Miller",
+      "exportStatus": "not_exported",
+      "grouped_tax_items": [
+        {
+          "_type": "grouped_tax",
+          "tax_rate": 0.05,
+          "tax_value": 30.8
+        }
+      ],
+      "guest": true,
+      "giftCertificateItems": [
+        {
+          "amount": 1,
+          "giftCertificateItemId": "540db3ffe58bfb04ab673757d7",
+          "recipientEmail": "miller@salesforce-test.com",
+          "shipmentId": "me"
+        }
+      ],
+      "lastModified": "2019-10-22T12:17:28.376Z",
+      "merchandizeTotalTax": 30,
+      "notes": {},
+      "orderNo": "00000410",
+      "orderPriceAdjustments": [
+        {
+          "appliedDiscount": {
+            "amount": 10,
+            "type": "amount"
+          },
+          "reasonCode": "customer service",
+          "createdBy": "support",
+          "creationDate": "2019-10-22T12:17:28.347Z",
+          "custom": true,
+          "lastModified": "2019-10-22T12:17:28.349Z",
+          "manual": true,
+          "price": -10,
+          "priceAdjustmentId": "63b9eb9b4a92bd3e5c6ee804c2",
+          "promotionId": "5ties"
+        }
+      ],
+      "orderToken": "7gJDIFlnho_mXrxfxVB9Neic3J7szzR9glvgU5Ath-I",
+      "orderTotal": 586.76,
+      "orderViewCode": "YGXrGbZWlr29tIsGnYgR5o_8OxBMXWigevx1WD0X1Hc",
+      "paymentInstruments": [
+        {
+          "amount": 20,
+          "paymentInstrumentId": "ca47e0da3d49b067b630db624a",
+          "paymentMethodId": "BML"
+        },
+        {
+          "amount": 566.76,
+          "paymentCard": {
+            "cardType": "Visa",
+            "creditCardExpired": false
+          },
+          "paymentInstrumentId": "6b970a04ca8a468a64b9936764",
+          "paymentMethodId": "CREDIT_CARD"
+        }
+      ],
+      "paymentStatus": "not_paid",
+      "productItems": [
+        {
+          "adjustedTax": 30,
+          "basePrice": 199.99,
+          "bonusProductLineItem": false,
+          "gift": false,
+          "itemId": "d9516eecc64bd90b0022714d26",
+          "itemText": "Green Umbrella - Sustained Edition",
+          "optionItems": [
+            {
+              "adjustedTax": 0,
+              "basePrice": 0,
+              "bonusProductLineItem": false,
+              "gift": false,
+              "itemId": "8991e8d7adf0f46ffbc584e175",
+              "itemText": "We will plant a tree for your order.",
+              "optionId": "plantATree",
+              "optionValueId": "000",
+              "price": 0,
+              "priceAfterItemDiscount": 0,
+              "priceAfterOrderDiscount": 0,
+              "productId": "000",
+              "productName": "Plant a tree.",
+              "quantity": 3,
+              "shipmentId": "me",
+              "tax": 0,
+              "taxBasis": 0,
+              "taxClassId": "standard",
+              "taxRate": 0.05
+            }
+          ],
+          "price": 599.99,
+          "priceAfterItemDiscount": 599.99,
+          "priceAfterOrderDiscount": 589.99,
+          "productId": "green-umbrella",
+          "productName": "Green Umbrella - Sustained Edition",
+          "quantity": 3,
+          "shipmentId": "me",
+          "tax": 30,
+          "taxBasis": 599.97,
+          "taxClassId": "standard",
+          "taxRate": 0.05
+        }
+      ],
+      "productSubTotal": 599.97,
+      "productTotal": 599.97,
+      "shipments": [
+        {
+          "adjustedMerchandizeTotalTax": 37,
+          "adjustedShippingTotalTax": 0.5,
+          "gift": false,
+          "merchandizeTotalTax": 30,
+          "productSubTotal": 599.97,
+          "productTotal": 599.97,
+          "shipmentId": "me",
+          "shipmentTotal": 646.76,
+          "shippingAddress": {
+            "address1": "4162  Turkey Pen Road",
+            "city": "New York",
+            "countryCode": "US",
+            "firstName": "Agustin",
+            "fullName": "Agustin Estes",
+            "id": "d5d95acf5381dc6e273b4336a7",
+            "lastName": "Estes",
+            "postalCode": "10016",
+            "stateCode": "NY"
+          },
+          "shippingMethod": {
+            "description": "Order received within 7-10 business days",
+            "id": "001",
+            "name": "Ground",
+            "price": 15.99
+          },
+          "shippingStatus": "not_shipped",
+          "shippingTotal": 15.99,
+          "shippingTotalTax": 0.8,
+          "taxTotal": 30.8
+        }
+      ],
+      "shippingItems": [
+        {
+          "adjustedTax": 0.8,
+          "basePrice": 15.99,
+          "itemId": "768abee75aa8015239a9696c7e",
+          "itemText": "Shipping",
+          "price": 15.99,
+          "priceAfterItemDiscount": 15.99,
+          "shipmentId": "me",
+          "tax": 0.8,
+          "taxBasis": 15.99,
+          "taxClassId": "standard",
+          "taxRate": 0.05
+        }
+      ],
+      "shippingStatus": "not_shipped",
+      "shippingTotal": 15.99,
+      "shippingTotalTax": 0.8,
+      "status": "created",
+      "taxation": "net",
+      "taxTotal": 30.8
+    }
+  }
+  ```
+  </TabItem>
+  <TabItem value="404" label="404">
+  Order not found
+  ```json
+  {
+    "type": "https://api.commercecloud.salesforce.com/documentation/error/v1/errors/order-not-found",
+    "title": "Order Not Found",
+    "detail": "No Order with ID 'ABC10001' could be found."
+  }
+  ```
+  </TabItem>
+</Tabs>
+
+## References
+
+### Official Documentation
+
+- commerce-sdk: [Checkout.ShopperOrders.getOrder](https://salesforcecommercecloud.github.io/commerce-sdk/classes/checkout.shopperorders.html#getorder)
+- SCAPI: [getOrder](https://developer.salesforce.com/docs/commerce/commerce-api/references/shopper-orders?meta=getOrder)

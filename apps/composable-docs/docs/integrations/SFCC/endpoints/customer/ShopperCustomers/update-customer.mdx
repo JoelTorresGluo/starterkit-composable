@@ -1,0 +1,154 @@
+---
+sidebar_position: 3
+---
+
+import Tabs from '@theme/Tabs'
+import TabItem from '@theme/TabItem'
+
+# Update Customer
+
+## Purpose
+
+This endpoint is used to update a customer from a Shopper context, such as when a customer updates their profile in their My Account section.
+
+## Example
+
+<Tabs>
+  <TabItem value="commerce-sdk" label="Commerce SDK">
+    ```js
+    const body = {
+      lastName: "Doe",
+      email: "test@example.com",
+    }
+
+    const parameters = {
+      customerId: 'abfTWMDZOgi3JPzkHjv9IhmziI'
+    }
+
+    const customer = await shopperCustomersClient.updateCustomer({ body, parameters });
+    ```
+
+  </TabItem>
+  <TabItem value="scapi" label="SCAPI">
+    ```http
+    PATCH /customer/shopper-customers/v1/organizations/{organizationId}/customers/{customerId}?siteId=RefArch HTTP/1.1
+    Host: {shortcode}.api.commercecloud.salesforce.com:443
+    content-type: application/json
+
+    {
+      "customer": {
+        "value": {
+          "customerNo": "00010009",
+          "firstName": "John",
+          "lastName": "Wild",
+          "email": "jwild@yourstore.com",
+          "fax": "+49 03641 78393 346"
+        }
+      }
+    }
+    ```
+
+  </TabItem>
+</Tabs>
+
+## Request
+
+### URL
+
+`PATCH https://{shortCode}.api.commercecloud.salesforce.com/customer/shopper-customers/{version}/organizations/{organizationId}/customers/{customerId}?siteId={siteId}`
+
+### Headers
+
+- `Authorization: Bearer {slas_token}`
+- `Content-Type: application/json`
+
+### URL Parameters
+
+- `shortCode` _string_: A region-specific merchant identifier. **(required)**
+  - Retrieved from Business Manager > Administration > Salesforce Commerce API Settings > Shortcode
+  - Example: `0dnz6oep`
+- `version` _string_: API version identifier. **(required)**
+  - Example: `v1`
+- `organizationId` _string_: The identifier for the organization. **(required)**
+  - Retrieved from Business Manager > Administration > Salesforce Commerce API Settings > organization ID
+- `customerId` _string_: The ID representing the customer to update **(required)**
+  - Example: `abfTWMDZOgi3JPzkHjv9IhmziI`
+
+### Query Parameters
+
+- `siteId` _string_: Identifies the site context of the request. Attributes may have site-specific values. **(required)**
+  - Example: `RefArch`
+
+### Request Body
+
+```json
+{
+  "customer": {
+    "value": {
+      "customerNo": "00010009",
+      "firstName": "John",
+      "lastName": "Wild",
+      "email": "jwild@yourstore.com",
+      "fax": "+49 03641 78393 346"
+    }
+  }
+}
+```
+
+## Response
+
+<Tabs>
+  <TabItem value="200" label="200">
+  ```json
+  {
+    "authType": "registered",
+    "creationDate": "2020-02-14T20:39:53.818Z",
+    "customerId": "abfTEMDZOgi3JPrkHjv9IhoziM",
+    "customerNo": "00010009",
+    "email": "jwild@yourstore.com",
+    "enabled": true,
+    "fax": "+49 03641 78393 346",
+    "firstName": "John",
+    "lastLoginTime": "2020-02-14T20:51:59.313Z",
+    "lastModified": "2020-02-14T20:55:12.133Z",
+    "lastName": "Wild",
+    "lastVisitTime": "2020-02-14T20:51:59.313Z",
+    "login": "f0a43dc2-692a-43bf-b008-e10918ea935d",
+    "previousLoginTime": "2020-02-14T20:51:59.313Z",
+    "previousVisitTime": "2020-02-14T20:51:59.313Z"
+  }
+  ```
+  </TabItem>
+  <TabItem value="400" label="400">
+  If the customer being updated is not the same as the JWT authenticated customer making the request, 400 is returned
+
+```json
+{
+  "title": "Invalid Customer",
+  "type": "https://api.commercecloud.salesforce.com/documentation/error/v1/errors/invalid-customer",
+  "detail": "The customer is invalid."
+}
+```
+
+  </TabItem>
+  <TabItem value="404" label="404">
+  Customer not found
+
+```json
+{
+  "title": "Not Found",
+  "type": "https://api.commercecloud.salesforce.com/documentation/error/v1/errors/not-found",
+  "detail": "No customer with ID 'abfTWMDZOgi3JPzkHjv9IhmziI' could be found.",
+  "customerId": "abfTWMDZOgi3JPzkHjv9IhmziI"
+}
+```
+
+  </TabItem>
+</Tabs>
+
+## References
+
+### Official Documentation
+
+- commerce-sdk: [Customer.ShopperCustomers.updateCustomer](https://salesforcecommercecloud.github.io/commerce-sdk/classes/customer.shoppercustomers.html#updatecustomer)
+- SCAPI: [updateCustomer](https://developer.salesforce.com/docs/commerce/commerce-api/references/shopper-customers?meta=updateCustomer)
