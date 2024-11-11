@@ -1,0 +1,146 @@
+---
+sidebar_position: 2
+---
+
+import Tabs from '@theme/Tabs'
+import TabItem from '@theme/TabItem'
+
+# Get Category From Catalog
+
+## Purpose
+
+This endpoint is used to fetch a single category by ID using the Admin API. Returns the first level of subcategories by default, but can request more using the `levels` parameter. Note that higher numbers can impact performnace.
+
+## Example
+
+<Tabs>
+  <TabItem value="commerce-sdk" label="Commerce SDK">
+    ```js
+    const parameters = {
+      catalogId: "site-catalog", // required
+      categoryId: "mens-shirts", // required
+      levels: 2
+    }
+    const category = await catalogsClient.getCategoryFromCatalog({ parameters });
+    ```
+  </TabItem>
+  <TabItem value="scapi" label="SCAPI">
+    ```http
+    GET /product/catalogs/v1/organizations/{organizationId}/catalogs/{catalogId}/categories/{categoryId} HTTP/1.1
+    Host: {shortcode}.api.commercecloud.salesforce.com:443
+    ```
+  </TabItem>
+</Tabs>
+
+## Request
+
+### URL
+
+`GET https://{shortCode}.api.commercecloud.salesforce.com/product/catalogs/{version}/organizations/{organizationId}/catalogs/{catalogId}/categories/{categoryId}?siteId=RefArch`
+
+### Headers
+
+- `Authorization: Bearer {access_token}`
+
+### URL Parameters
+
+- `shortCode` _string_: A region-specific merchant identifier. **(required)**
+  - Retrieved from Business Manager > Administration > Salesforce Commerce API Settings > Shortcode
+  - Example: `0dnz6oep`
+- `version` _string_: API version identifier. **(required)**
+  - Example: `v1`
+- `organizationId` _string_: The identifier for the organization. **(required)**
+  - Retrieved from Business Manager > Administration > Salesforce Commerce API Settings > organization ID
+- `catalogId` _string_: The ID of the catalog to get the category from **(required)**
+  - Example: `site-catalog`
+- `categoryId` _string_: The ID of the requested category **(required)**
+  - Example: `mens-shirts`
+
+### Query Parameters
+
+- `levels` _string_: The depth of subcategories to fetch **(required)**
+  - Example: `2`
+
+## Response
+
+<Tabs>
+  <TabItem value="200" label="200">
+  Success, category data
+  ```json
+  {
+    "catalogId": "apparel-catalog",
+    "categories": [
+      {
+        "catalogId": "apparel-catalog",
+        "creationDate": "2019-02-21T22:09:40.000Z",
+        "id": "mens-accessories",
+        "lastModified": "2019-02-21T22:10:14.000Z",
+        "name": {
+          "default": "Accessories"
+        },
+        "online": true,
+        "parentCategoryId": "mens"
+      },
+      {
+        "catalogId": "apparel-catalog",
+        "creationDate": "2019-02-21T22:09:40.000Z",
+        "id": "mens-clothing",
+        "lastModified": "2019-02-21T22:10:15.000Z",
+        "name": {
+          "default": "Clothing"
+        },
+        "online": true,
+        "parentCategoryId": "mens"
+      }
+    ],
+    "creationDate": "2019-02-21T22:09:40.000Z",
+    "id": "mens",
+    "lastModified": "2019-09-04T15:07:14.000Z",
+    "online": true,
+    "parentCategoryId": "root",
+    "position": 2
+  }
+  ```
+  </TabItem>
+  <TabItem value="400" label="400">
+  Bad request, invalid query parameters
+
+```json
+{
+  "title": "Bad Request",
+  "type": "https://api.commercecloud.salesforce.com/documentation/error/v1/errors/invalid-query-parameter",
+  "detail": "offset-BAD-REQUEST parameters are not defined in RAML."
+}
+```
+
+  </TabItem>
+  <TabItem value="401" label="401">
+  Missing or invalid client ID or access token
+  ```json
+  {
+    "title": "Invalid Access Token",
+    "type": "https://api.commercecloud.salesforce.com/documentation/error/v1/errors/invalid-access-token",
+    "detail": "The request is unauthorized, the access token is invalid.",
+    "accessToken": "hbGciOiJIUzI1NiIsInR5cCI6Ikp"
+  }
+  ```
+  </TabItem>
+  <TabItem value="404" label="404">
+  Catalog or category not found
+  ```json
+  {
+    "title": "Catalog Not Found",
+    "type": "https://api.commercecloud.salesforce.com/documentation/error/v1/errors/catalog-not-found",
+    "detail": "No catalog with ID '095c2082-5f2a-47d5-bc73-27d06c5c9db8' could be found.",
+    "catalogId": "095c2082-5f2a-47d5-bc73-27d06c5c9db8"
+  }
+  ```
+  </TabItem>
+</Tabs>
+
+## References
+
+### Official Documentation
+
+- commerce-sdk: [Product.Catalogs.getCategoryFromCatalog](https://salesforcecommercecloud.github.io/commerce-sdk/classes/product.catalogs.html#getcategoryfromcatalog)
+- SCAPI: [getCategoryFromCatalog](https://developer.salesforce.com/docs/commerce/commerce-api/references/catalogs?meta=getCategoryFromCatalog)

@@ -1,0 +1,109 @@
+---
+sidebar_position: 1
+---
+
+import Tabs from '@theme/Tabs'
+import TabItem from '@theme/TabItem'
+
+# Authorize Customer
+
+## Purpose
+
+This endpoint is used to fetch the authorization code used in the OAuth 2.1 authorization flow.
+
+## Commerce SDK Example
+
+```js
+const codeVerifier = 'oin0923nf!)@$nionsf8*SDf'
+const { code, url, usid } = await slasHelpers.authorize(
+  slasClient,
+  codeVerifier,
+  {
+    hint: 'guest',
+    redirectURI: 'http://localhost:3000',
+    usid: 'b0849cde-c659-48b8-a151-6947708b9d92',
+  }
+)
+```
+
+## Request
+
+### URL
+
+```http
+GET https://{shortCode}.api.commercecloud.salesforce.com/shopper/auth/v1/organizations/{organizationId}/oauth2/authorize?redirect_uri=http://localhost:3000/callback&client_id=client-id1&code_challenge=krc5G3_5lRUcXDUzFZQ88oJA_-ZmlHWkyGsgOrSLEWg
+```
+
+### URL Parameters
+
+- `shortCode` _string_: A region-specific merchant identifier. **(required)**
+  - Retrieved from Business Manager > Administration > Salesforce Commerce API Settings > Shortcode
+  - Example: `0dnz6oep`
+- `version` _string_: API version identifier. **(required)**
+  - Example: `v1`
+- `organizationId` _string_: The identifier for the organization. **(required)**
+  - Retrieved from Business Manager > Administration > Salesforce Commerce API Settings > organization ID
+
+### Query Parameters
+
+- `redirect_uri` _string_: The URL to redirect to after authorization. **(required)**
+  - Example: `http://localhost:3000/callback`
+- `response_type` _enum string_: Is always set to `code`.
+- `client_id` _string_: The SLAS client ID performing the request.
+  - Example: `67468d5f-d7b0-48d8-8d1a-c5e04745d3aa`
+- `scope` _enum string_: Not typically required
+  - Values: `openid`, `offline_access`, `email`
+- `state` _string_: Used to indicate the state of the client during authorization, optional but used for CSRF. Typically a random string.
+  - Example: `a83f&*enlfsd&&SDf`
+- `usid` _string_: A unique ID for the shopper. Can be provided if the client is aware of an external USID. If not, SFCC will generate one.
+  - Example: `20064d6d-6151-4d78-968e-a1278fba5df0`
+- `hint` _string_: Used to explicitly set an identity provider. The following values can be relevant depending on the use case:
+  - `guest`: guest user login
+  - `sb-user`: session bridging for registered users
+  - `sb-guest`: session bridging for guests
+  - `{provider_id}`: configured external IDP
+- `channel_id` _string_: Represents an SFCC Site ID
+  - Example: `RefArch`
+- `code_challenge` _string_: Used for PKCE for public client authorization. Should be a base64 encoded, SHA-256 hashed `code_verifier` string
+  - Example: `bGpibmE5OGhmb2l1YWpuMjM5OGZuYW93ZWZoMD0=`
+- `ui_locales` _string_: Identifies the site context of the request. Attributes may have site-specific values. **(required)**
+  - Example: `en-CA fr-CA`
+
+## Response
+
+<Tabs>
+  <TabItem value="303" label="303">
+  ```json
+  {
+    "authorizationCode": "eyJ2ZXIiOiIxLjAiLCJraWQiOiJTTEFTIiwidHlwIjoiand0IiwiY2x2IjoiS",
+    "usid": "156c4e69-e89b-406b-a4b7-576980bb234e"              
+  }
+  ```
+  </TabItem>
+  <TabItem value="400" label="400">
+  In case the client ID is missing or invalid
+
+```json
+{
+  "error": "invalid_request",
+  "error_description": "Bad or missing client_id."
+}
+```
+
+  </TabItem>
+  <TabItem value="500" label="500">
+  ```json
+  {
+  "error": "server_error",
+  "error_description": "The server has encountered a situation that it doesn't know how to handle."
+  }
+  ```
+  </TabItem>
+</Tabs>
+
+## References
+
+### Official Documentation
+
+- commerce-sdk: [slasHelpers.authorize](https://salesforcecommercecloud.github.io/commerce-sdk/modules/helpers.html#authorize)
+- SCAPI: [authorizeCustomer](https://developer.salesforce.com/docs/commerce/commerce-api/references/shopper-login?meta=authorizeCustomer)

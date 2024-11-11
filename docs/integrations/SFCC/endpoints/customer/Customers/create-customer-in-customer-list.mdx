@@ -1,0 +1,164 @@
+---
+sidebar_position: 2
+---
+
+import Tabs from '@theme/Tabs'
+import TabItem from '@theme/TabItem'
+
+# Create Customer in Customer List
+
+## Purpose
+
+This endpoint is dedicated to creating new customer profiles within a customer list within SFCC. It handles the ingestion of essential customer information. This service ensures data integrity by enforcing unique login credentials and required fields during the customer registration process.
+
+Successful execution of this endpoint results in the registration of a new customer in the system for a specific customer list, providing the foundation for all future interactions and transactions involving the customer's profile.
+
+:::note
+
+This is the Admin API equivalent of the [Register Customer](../ShopperCustomers/register-customer.md) endpoint
+
+:::
+
+## Authentication
+
+A JSON Web Token (JWT) is required to authenticate the request.
+
+## Example
+
+<Tabs>
+  <TabItem value="commerce-sdk" label="Commerce SDK">
+    ```js
+    const body = {
+      credentials: {
+          enabled: true,
+          locked: false,
+          login: "wleung",
+          passwordQuestion: "Carmine"
+        },
+      lastName: "Leung",
+      customerNo: "00005002"
+    }
+    const parameters = {
+      customerNo: '00005002', // required
+      listId: 'customer-list' // required
+    }
+    const customer = await customersClient.createCustomerInCustomerList({ body, parameters });
+    ```
+  </TabItem>
+  <TabItem value="scapi" label="SCAPI">
+
+```http
+  PUT https://{shortCode}.api.commercecloud.salesforce.com/customer/customers/{version}/organizations/{organizationId}/customer-lists/{listId}/customers/{customerNo}
+  Host: {shortcode}.api.commercecloud.salesforce.com:443
+  content-type: application/json
+
+
+  {
+    "credentials": {
+      "enabled": true,
+      "locked": false,
+      "login": "wleung",
+      "passwordQuestion": "Carmine"
+    },
+    "lastName": "Leung",
+    "customerNo": "00005002"
+}
+```
+
+  </TabItem>
+</Tabs>
+
+## Request
+
+### URL
+
+`PUT https://{shortCode}.api.commercecloud.salesforce.com/customer/customers/{version}/organizations/{organizationId}/customer-lists/{listId}/customers/{customerNo}`
+
+### Headers
+
+- `Authorization: Bearer {access_token}`
+- `Content-Type: application/json`
+
+### URL Parameters
+
+- `shortCode` _string_: A region-specific merchant identifier. **(required)**
+  - Retrieved from Business Manager > Administration > Salesforce Commerce API Settings > Shortcode
+  - Example: `0dnz6oep`
+- `version` _string_: API version identifier. **(required)**
+  - Example: `v1`
+- `organizationId` _string_: The identifier for the organization. **(required)**
+  - Retrieved from Business Manager > Administration > Salesforce Commerce API Settings > organization ID
+- `listId` _string_: The ID of the Customer List. **(required)**
+  - Example: `customer-list`
+- `customerNo` _string_: The customer number being requested. **(required)**
+  - Example: `00005001`
+
+### Request Body
+
+```js
+  {
+    "credentials": {
+      "enabled": true,
+      "locked": false,
+      "login": "wleung",
+      "passwordQuestion": "Carmine"
+    },
+    "lastName": "Leung",
+    "customerNo": "00005002"
+  }
+```
+
+## Response
+
+<Tabs>
+  <TabItem value="200" label="200">
+  ```js
+    {
+      "creationDate": "2019-09-23T19:46:07.412Z",
+      "credentials": {
+        "enabled": true,
+        "locked": false,
+        "login": "wleung"
+      },
+      "customerId": "adg2p1zObo8JDt3iXZCNIZBcai",
+      "customerNo": "00005001",
+      "lastModified": "2019-09-23T19:46:07.417Z",
+      "lastName": "Leung"
+    }
+  ```
+  </TabItem>
+  <TabItem value="400" label="400">
+
+If the customer cannot be created due to validation failures or data issues, the API responds with a 400 status code. This error code is accompanied by a detailed message specifying the reason for the failure, enabling clients to address the issues promptly.
+
+```js
+  {
+    "title": "Bad Request",
+    "type": "https://api.commercecloud.salesforce.com/documentation/error/v1/errors/invalid-query-parameter",
+    "detail": "offset-BAD-REQUEST parameters are not defined in RAML."
+  }
+```
+
+  </TabItem>
+  <TabItem value="401" label="401">
+
+Case when customerList is not found at specified listID for the organization.
+
+```json
+{
+  "title": "Customer List Not Found",
+  "type": "https://api.commercecloud.salesforce.com/documentation/error/v1/errors/customer-list-not-found",
+  "detail": "No customer list with ID 'CanadaCustomerList' could be found.",
+  "customerListId": "CanadaCustomerList"
+}
+```
+
+  </TabItem>
+</Tabs>
+
+## References
+
+### Official Documentation
+
+- commerce-sdk: [Customer.Customers.createCustomerInCustomerList](https://salesforcecommercecloud.github.io/commerce-sdk/classes/customer.customers.html#createcustomerincustomerlist)
+- SCAPI: [createCustomerInCustomerList](https://developer.salesforce.com/docs/commerce/commerce-api/references/customers?meta=createCustomerInCustomerList)

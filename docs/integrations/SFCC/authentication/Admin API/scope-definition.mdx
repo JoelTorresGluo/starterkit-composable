@@ -1,0 +1,45 @@
+---
+sidebar_position: 1
+---
+
+# Scope Definition
+
+Scopes are strings that define the permissions an API client can have. In the context of Salesforce Commerce Cloud (SFCC), these scopes specify the levels of access that an API client can obtain when interacting with different parts of the SFCC platform. They help ensure that API clients have appropriate access rights to perform their intended functions without exceeding their authorization.
+
+Scopes are used to:
+
+- **Control Access**: They define what resources an API client can access and what actions it can perform on those resources.
+- **Enhance Security**: By limiting access to only what is necessary, scopes help minimize potential security risks, ensuring that an API client cannot access more data or functionality than required.
+
+#### How Scopes Work in the Authorization Process
+
+- **List Required Scopes**: Before creating an API client, you need to determine which parts of the Admin APIs your application needs to interact with. For each part or API family, there are specific scopes defined. For example, if you need to manage CDN Zones, you would include scopes like sfcc.cdn-zones and sfcc.cdn-zones.rw in your list.
+
+- **Register API Client**: When registering your API client in the Salesforce Account Manager, you include the list of scopes you previously compiled. This step effectively requests permission for your API client to access those specific areas of the SFCC.
+
+- **Authorization**: When the API client makes a request to the SFCC, it must provide a bearer token. This token is obtained through an OAuth 2.0 authentication flow. During this flow, the API client is authenticated and authorized based on the scopes it has been granted. The token reflects these scopes, encapsulating the permissions that the API client has.
+
+- **Access Control**: When your API client uses the bearer token to make requests to the SFCC, the system checks the token to verify that it has the appropriate scopes for the requested actions. If the token does not have the necessary scopes, the request will be denied.
+
+#### Practical Use
+
+In practical terms, you first determine the functionalities your application needs from the Admin APIs and list the corresponding scopes. You then configure your API client with these scopes and authenticate to receive a bearer token. Each time you make an API request, this token is used to ensure your client has the necessary permissions to perform the action requested.
+
+By carefully managing scopes, Salesforce ensures that applications using its APIs are secure and that data exposure is minimized to only what is necessary.
+
+| Example Scope        | Scope Identifier    | Access Type  |
+| -------------------- | ------------------- | ------------ |
+| Catalog Management   | `sfcc.catalogs`     | Full access  |
+|                      | `sfcc.catalogs.rw`  | Read / Write |
+| Order Management     | `sfcc.orders`       | Full access  |
+|                      | `sfcc.orders.rw`    | Read / Write |
+| Inventory Management | `sfcc.inventory`    | Full access  |
+|                      | `sfcc.inventory.rw` | Read / Write |
+| Customer Management  | `sfcc.customers`    | Full access  |
+|                      | `sfcc.customers.rw` | Read / Write |
+| Content Management   | `sfcc.content`      | Full access  |
+|                      | `sfcc.content.rw`   | Read / Write |
+| Site Configuration   | `sfcc.sites`        | Full access  |
+|                      | `sfcc.sites.rw`     | Read / Write |
+| CDN Zones Management | `sfcc.cdn-zones`    | Full access  |
+|                      | `sfcc.cdn-zones.rw` | Read / Write |

@@ -1,0 +1,130 @@
+---
+sidebar_position: 2
+---
+
+import Tabs from '@theme/Tabs'
+import TabItem from '@theme/TabItem'
+
+# Get Access Token
+
+## Purpose
+
+This endpoint returns a customer JWT access token for use with SCAPI Shopper APIs.
+
+:::note
+
+There is no Commerce SDK equivalent. Instead, use [slasHelpers.loginGuestUser](https://salesforcecommercecloud.github.io/commerce-sdk/modules/helpers.html#loginguestuser) or [slasHelpers.loginRegisteredUserB2C](https://salesforcecommercecloud.github.io/commerce-sdk/modules/helpers.html#loginregistereduserb2c)
+
+:::
+
+## SLAS Example
+
+```http
+  POST /shopper/auth/v1/organizations/{organizationId}/oauth2/token HTTP/1.1
+  Host: {shortcode}.api.commercecloud.salesforce.com:443
+  Authorization: Basic <client credentials>
+  content-type: application/x-www-form-urlencoded
+```
+
+## Request
+
+### URL
+
+```http
+GET https://{shortCode}.api.commercecloud.salesforce.com/shopper/auth/v1/organizations/{organizationId}/oauth2/authorize?redirect_uri=http://localhost:3000/callback&client_id=client-id1&code_challenge=krc5G3_5lRUcXDUzFZQ88oJA_-ZmlHWkyGsgOrSLEWg
+```
+
+### Headers
+
+:::note
+
+Authorization header is not required if `grant_type` is `authorization_code_pkce`
+
+:::
+
+- `Authorization: Basic <client_credentials>`
+- `Content-Type: application/x-www-form-urlencoded`
+
+### URL Parameters
+
+- `shortCode` _string_: A region-specific merchant identifier. **(required)**
+  - Retrieved from Business Manager > Administration > Salesforce Commerce API Settings > Shortcode
+  - Example: `0dnz6oep`
+- `version` _string_: API version identifier. **(required)**
+  - Example: `v1`
+- `organizationId` _string_: The identifier for the organization. **(required)**
+  - Retrieved from Business Manager > Administration > Salesforce Commerce API Settings > organization ID
+
+### Query Parameters
+
+- `refresh_token` _string_: Used when `grant_type` is `refresh_token`
+- `code` _string_: Authorization code retrieved from `/authorize` endpoint.
+  - Example: `M0t1K0pyoFKhBpUZnuUYO07xf8iYyMJrAc7h31h_ra8.gglPClJHsofqdTm_yPe5n6m2yCXzFmD8qICwIEjQGVA`
+- `usid` _string_: The USID retrieved from `/authorize` endpoint.
+  - Example: `67468d5f-d7b0-48d8-8d1a-c5e04745d3aa`
+- `grant_type` _enum string_ **(required)**
+  - Values: `authorization_code`, `refresh_token`, `client_credentials`, `authorization_code_pkce`, `session_bridge`
+- `redirect_uri` _string_: The redirect URI passed to the `/authorize` endpoint.
+  - Example: `http://localhost:3000`
+- `code_verifier` _string_: The code verifier string created during the authorize step.
+  - Example: `ino234fi0asdnof-2489hfsdfji8##`
+- `client_id` _string_: SLAS client ID. Required when `grant_type` is `authorization_code_pkce`
+  - Example: `88d21b41-96e8-456e-8da2-cfa8e34835b2`
+- `channel_id` _string_: Represents an SFCC Site ID
+  - Example: `RefArch`
+- `dnt` _string_: Set to `true` to set Do Not Track for the session.
+  - Example: `true`
+
+## Response
+
+<Tabs>
+  <TabItem value="200" label="200">
+  ```json
+  {
+    "access_token": "eyJ2ZXIiOiIxLjAiLCJraWQiOiJTTEFTIiwidHlwIjoiand0IiwiY2x2IjoiSjIuMS4wIiwiYWxnIjoiRVMyNTYifQ.eyJhdWQiOiJjb3JlL2Rldi9idGluZ2V5bHRtMiIsImF1dCI6IkdVSUQiLCJzdWIiOiJ1c2lkOjo1NGFkMmM1YS05MWYwLTQ0YWItODE3Yy03M2Q2Yjg2ODcyZDk6OnVwbjpndWVzdCIsIm5iZiI6MTU4Mjg0NTYyNCwiY3R4Ijoic2ZkYy5jb21tZXJjZWNsb3VkIiwiaXNzIjoiY29yZS9kZXYvYnRpbmdleWx0bTIiLCJzdHkiOiJVc2VyIiwiaXN0IjoxLCJleHAiOjE1ODI4NDU3NDQsImlhdCI6MTU4Mjg0NTY1NCwianRpIjoiQzJDOTA0ODg2NDA3MDkwNDg4NjQwNzMyMjExNzQ1ODEyMTQzIn0.2a6lMBSY17PrhDO8pvEk7PCXW_nkguMHi4J-Tuirkz-ETB6rnKyuRjF5yD6B55tMvm8dO8ulAHyDYqjObMxLJg",
+    "id_token": "eyJraWQiOiI3NGU2YjMxZS1lYTczLTQ3OTYtOWRkYi1jMDJmZGI4ZDgwYmUiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJ1c2lkOmQ1MDBhMzY5LTc1MWQtNDkzYy1iNDAzLThmOThmYjg3MTdiNiIsImF1ZCI6IjU1M2FjOGFjLTRkYjktNGVkMy04MjVjLTNhZTNiZjVkMzI3YiIsImlzcyI6ImRldi51cy5zaG9wcGVyLmNjLnNhbGVzZm9yY2UuY29tIiwibmFtZSI6ImJsYWlyLnNsYXMudGVzdEBnbWFpbC5jb20iLCJleHAiOjE1OTExMTE0MzgsImlhdCI6MTU5MTEwOTYzOCwiZW1haWwiOiJibGFpci5zbGFzLnRlc3RAZ21haWwuY29tIn0.KgpAcq-G9Lz7IGnjkJlaFLFXYncVCwcVrRIuy3bEfgzRozqaDRvAori4oOz4RtgYjmoc5x2euoisHL0mVnHgPKOdYBty1wTJqneJEQt6hP4Kp0KFciID_ILCi-DE8VWS5t0NknnMP_iKhIkqcRL48iwPFUWkWA6AEWxE_yvJLNRLithsSxsx7EfBfpD8Hr2b5tMEwImQNmJNYGRTI4LSmcYspBORvJoAnfGpMC0kglxl40bhf5j4ItX4_DiWQC4zaGYD-HJV4BDr6C7iGCs5ZVPypF0yQD3iBio26fwj9Ys5WF9XMtPtqET2kqsz6fDC5GkE6HTUHH_r87jxbDq-8w",
+    "refresh_token": "EgMYpjfFKdlSy-a3PYeyihmP95IpIp3FaDpPmVH1yu8.lahomBi7zJbRa6yKAuAAiKu3lprTPsEueKwqcBvhRLU",
+    "expires_in": 900,
+    "refresh_token_expires_in": 7776000,
+    "token_type": "Bearer",
+    "usid": "18cda486-fe32-4e27-888b-6e4f89938e67",
+    "customer_id": "1000005",
+    "enc_user_id": "45D39A8499A95288F82855427EBA99B5",
+    "idp_access_token": "eyJraWQiOiJYS21HbHVuSm0zSlBTMHNjQXZXV19XQlYtRi1wMkxLSDR0V05UMHVVSjVJIiwiYWxnIjoiUlMyNTYifQ.eyJ2ZXIiOjEsImp0aSI6IkFULjFMY0xxTWhqM2t0N1FKeFhxQ0VtdGZOOVV2eUcweW1meDFxZG9BdzF1NWMub2FyeXhveHF0QUtxaVFMbkM1ZDYiLCJpc3MiOiJodHRwczovL2Rldi05NTY1MjM2Lm9rdGEuY29tIiwiYXVkIjoiaHR0cHM6Ly9kZXYtOTU2NTIzNi5va3RhLmNvbSIsInN1YiI6Im9rdGEuc2xhcy50ZXN0IiwiaWF0IjoxNjc5Njk4MzA4LCJleHAiOjE2Nzk3MDE5MDgsImNpZCI6IjBvYTJrNXNma0JXZ0poTEVHNWQ2IiwidWlkIjoiMDB1MzhxZGpuU2NMT0IxbXE1ZDYiLCJzY3AiOlsib2ZmbGluZV9hY2Nlc3MiLCJvcGVuaWQiLCJlbWFpbCIsInByb2ZpbGUiXSwiYXV0aF90aW1lIjoxNjc5Njk4MzA2fQ.FDbGsnZGwTYVKGSlAo6jqcjG2HQ_BqQKRk72M5h69DRHyOM4wngsEELN_Wtgj3E77sP7IOmIKjiK5SFP17ADMbKZptVr2pqaMVF3PuU3Cbl_MgXZValfT-z12jHRq9sHMfsdTjY2RnvG44ZDFKc2no8mdL6IJ1MfCaZT5Tql5Ktq_UgudaWFsYqad3ETcmp5Y8ivz1bFnqud0sO9D9JzYOtfd9h71JKcsSC2rXc_Si-INPKKaGl8CDgaLXxu_Am9twJpUenHLpy0BerhcVvdFz7_611E53xOT_Esrc1pe-XAZtlYsJFnhxTBDT342ukiSWk2m6juVappv1GsRfUf2g"
+  }
+  ```
+  </TabItem>
+  <TabItem value="400" label="400">
+  In case the client ID is missing, invalid, or the authorization code is incorrect.
+
+```json
+{
+  "error": "invalid_request",
+  "error_description": "Bad or missing access token."
+}
+```
+
+  </TabItem>
+  <TabItem value="401" label="401">
+  ```json
+  {
+    "error": "invalid_client",
+    "error_description": "Basic Authorization failed."
+  }
+  ```
+  </TabItem>
+  <TabItem value="500" label="500">
+  ```json
+  {
+    "error": "server_error",
+    "error_description": "The server has encountered a situation that it doesn't know how to handle."
+  }
+  ```
+  </TabItem>
+</Tabs>
+
+## References
+
+### Official Documentation
+
+- SCAPI: [getAccessToken](https://developer.salesforce.com/docs/commerce/commerce-api/references/shopper-login?meta=getAccessToken)

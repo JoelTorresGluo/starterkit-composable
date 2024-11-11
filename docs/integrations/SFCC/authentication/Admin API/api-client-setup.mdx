@@ -1,0 +1,99 @@
+---
+sidebar_position: 2
+---
+
+# Setup API Client
+
+import React, { useState } from 'react'
+import Tabs from '@theme/Tabs'
+import TabItem from '@theme/TabItem'
+
+:::note
+
+Admin APIs use Salesforce Account Manager for security, while Shopper APIs utilize the Shopper Login and API Access Service (SLAS) for protection. This guide focuses exclusively on accessing the Admin APIs.
+
+:::
+
+## Prerequisites
+
+_Scope Definition_
+
+## Setting up the API Client
+
+The API client uses OAuth 2.0 protocol to authenticate and obtain a bearer token from Salesforce. This token is used to make authenticated requests to the Admin APIs.
+
+#### Step 1: Log Into Account Manager
+
+Start by logging into the Account Manager:
+
+1. **Navigate to the Login Page**: Visit the Salesforce Commerce Cloud Account Manager website.
+2. **Enter Your Credentials**: Use your administrator username and password to log in.
+
+#### Step 2: Add New API Client
+
+Once logged in, you need to create a new API client:
+
+1. **Access the API Client Panel**:
+
+   - Click on **API Client** from the left navigation menu.
+   - Select **Add API Client** to initiate a new registration.
+
+2. **Configure API Client Details**:
+
+   - **Display Name**: Enter a unique and descriptive name for your API client, e.g., `Admin Client for Pia Larson`.
+   - **Password Setup**: Create a secure password and confirm it. It is crucial to save this password securely as it acts as the client secret.
+
+   :::note
+   Save your client secret (password) in a password manager to ensure it remains secure and retrievable.
+   :::
+
+#### Step 3: Specify Organizations
+
+Link your API client to one or more organizations:
+
+1. **Manage Organizations**:
+   - Click **Add** under the Organizations section.
+   - Select the desired organizations from the list and click **Add** again.
+
+#### Step 4: Assign Roles
+
+Assign appropriate roles to your API client to define its capabilities:
+
+1. **Add Roles**:
+   - Navigate to the Roles section and click **Add**.
+   - Search for and select **Salesforce Commerce API** under the Salesforce Commerce API category.
+   - Use the filter button to select an organization.
+   - For each instance you wish to access, select the instance and click **Add**.
+
+#### Step 5: Configure OpenID Connect
+
+Set up OpenID Connect parameters for your API client:
+
+1. **Default and Allowed Scopes**:
+
+   - In the **Default Scopes** field, enter the following:
+     ```
+     mail
+     roles
+     tenantFilter
+     profile
+     openId
+     ```
+   - In the **Allowed Scopes** field, enter the list of scopes you have prepared earlier, each on a separate line.
+
+2. **Token and Authentication Settings**:
+   - **Token Endpoint Auth Method**: Choose `client_secret_post`.
+   - **Access Token Format**: Select `JWT`.
+   - **Redirect URIs**: Add `http://localhost:8080` as a redirect URI.
+
+#### Step 6: Finalize and Retrieve API Client ID
+
+1. **Save Configuration**: Click **Save** to store your settings.
+2. **Locate API Client ID**:
+
+   - Find your newly created API client in the table of API clients.
+   - Copy the value from the **API Client ID** column, for example, `1d763261-6522-4913-9d52-5d947d3b94c4`.
+
+   :::note
+   Clients configured for OCAPI use cannot be used for the Commerce API. Clients with the role OCAPI cannot have `Salesforce Commerce API` as a role.
+   :::

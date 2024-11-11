@@ -1,0 +1,107 @@
+---
+sidebar_position: 4
+---
+
+import Tabs from '@theme/Tabs'
+import TabItem from '@theme/TabItem'
+
+# Update Order
+
+## Purpose
+
+This endpoint is used to update an order record using the Admin API. It is authenticated using an Admin API access token.
+
+## Example
+
+<Tabs>
+  <TabItem value="commerce-sdk" label="Commerce SDK">
+    ```js
+    const body = {
+      c_carrierCode: "DHL",
+      c_weight: 2.4,
+      c_review: null
+    }
+    const parameters = {
+      orderNo: "00000410" // required
+    }
+    await ordersClient.updateOrder({ body, parameters });
+    ```
+  </TabItem>
+  <TabItem value="scapi" label="SCAPI">
+  ```http
+  PATCH /checkout/orders/v1/organizations/{organizationId}/orders/{orderNo}?siteId=SiteGenesis HTTP/1.1
+  Host: {shortcode}.api.commercecloud.salesforce.com:443
+  content-type: application/json
+
+{
+"c_carrierCode": "DHL",
+"c_weight": 2.4,
+"c_review": null
+}
+
+````
+</TabItem>
+</Tabs>
+
+## Request
+
+### URL
+
+``PATCH https://{shortCode}.api.commercecloud.salesforce.com/checkout/orders/{version}/organizations/{organizationId}/orders/{orderNo}``
+
+### Headers
+- ``Authorization: Bearer {access_token}``
+- ``Content-Type: application/json``
+
+### URL Parameters
+
+- ``shortCode`` *string*: A region-specific merchant identifier. **(required)**
+- Retrieved from Business Manager > Administration > Salesforce Commerce API Settings > Shortcode
+- Example: ``0dnz6oep``
+- ``version`` *string*: API version identifier. **(required)**
+- Example: `v1`
+- ``organizationId`` *string*: The identifier for the organization. **(required)**
+- Retrieved from Business Manager > Administration > Salesforce Commerce API Settings > organization ID
+- ``listId`` *string*: The ID of the Customer List. **(required)**
+- Example: `customer-list`
+- ``orderNo`` *string*: The order number to update. **(required)**
+- Example: `00005001`
+
+### Query Parameters
+
+- ``siteId`` *string*: The site context of the request. Used to handle site-specific product assignments and attribute values. **(required)**
+- Example: `RefArch`
+
+### Request Body
+```json
+{
+  "c_carrierCode": "DHL",
+  "c_weight": 2.4,
+  "c_review": null
+}
+````
+
+## Response
+
+<Tabs>
+  <TabItem value="204" label="204">
+  Success, no content
+  </TabItem>
+  <TabItem value="404" label="404">
+  Order not found
+  ```json
+  {
+    "title": "Order not found",
+    "type": "https://api.commercecloud.salesforce.com/documentation/error/v1/errors/order-not-found",
+    "detail": "No order with number '00001547' was found."
+  }
+  ```
+  </TabItem>
+</Tabs>
+
+## References
+
+### Official Documentation
+
+- commerce-sdk: [Checkout.Orders.updateOrder](https://salesforcecommercecloud.github.io/commerce-sdk/classes/checkout.orders.html#updateorder)
+- SCAPI: [updateOrder](https://developer.salesforce.com/docs/commerce/commerce-api/references/orders?meta=updateOrder)

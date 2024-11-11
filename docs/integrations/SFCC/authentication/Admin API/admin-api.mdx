@@ -1,0 +1,126 @@
+---
+sidebar_position: 3
+---
+
+# Request Bearer Token
+
+import React, { useState } from 'react'
+import Tabs from '@theme/Tabs'
+import TabItem from '@theme/TabItem'
+
+:::note
+
+Admin APIs use Salesforce Account Manager for security, while Shopper APIs utilize the Shopper Login and API Access Service (SLAS) for protection. This guide focuses exclusively on accessing the Admin APIs.
+
+:::
+
+## Prerequisites
+
+_Scope Definition_
+
+_API Client Setup_
+
+## Requesting an Access Token
+
+<Tabs>
+  <TabItem value="Unix Shell Commands" label="Unix Shell Commands">
+
+### Credentials
+
+In your request, you must provide a credentials string in the HTTP header that is composed of your client ID, followed by a colon (:), followed by your client secret (password). Use the following commands to format the credentials string correctly and save it as an environment variable.
+
+```bash
+   export "SFCC_OAUTH_CLIENT_ID=1d763261-6522-4913-9d52-5d947d3b94c4"
+   export "SFCC_OAUTH_CLIENT_SECRET=GS8KmdDEUKfWnEnv"
+   export "SFCC_CREDENTIALS=${SFCC_OAUTH_CLIENT_ID}:${SFCC_OAUTH_CLIENT_SECRET}"
+```
+
+### Scope Parameter
+
+When making a request, include extra details with the scope parameter. Although roles can be added for various instances to an API client, access tokens are limited to one instance per request. Set the realm and instance IDs as environment variables, replacing the placeholders (zzte and 053) with your specific instance details, as outlined in the [Base URL and Request Formation Guide](https://developer.salesforce.com/docs/commerce/commerce-api/guide/base-url.html).
+
+To retrieve these values go to
+
+`Bussines Manager >> Administration >> Salesforce Commerce API >> Organization ID`
+
+You should have a value similar to this example: `f_ecom_zzte_053`
+
+In this example `zzte` is the Realm ID and `053`.
+
+We can now set our environment variables:
+
+```bash
+   export "SFCC_REALM_ID=zzte"
+   export "SFCC_INSTANCE_ID=053"
+```
+
+Finally, define the scope you are requesting for.
+
+```bash
+   export "SFCC_OAUTH_SCOPES=sfcc.catalogs"
+```
+
+### Request
+
+You can request an access token using an HTTP request like this:
+
+```bash
+   curl "https://account.demandware.com/dwsso/oauth2/access_token" \
+   --request 'POST' \
+   --user "$SFCC_CREDENTIALS" \
+   --header 'Content-Type: application/x-www-form-urlencoded' \
+   --data "grant_type=client_credentials" \
+   --data-urlencode "scope=SALESFORCE_COMMERCE_API:${SFCC_REALM_ID}_${SFCC_INSTANCE_ID} $SFCC_OAUTH_SCOPES"
+```
+
+  </TabItem>
+
+  <TabItem value="HTTP Request" label="HTTP Request">
+    ### Credentials
+
+In your request, you must provide a credentials string in the HTTP header that is composed of your client ID, followed by a colon (:), followed by your client secret (password). Use the following commands to format the credentials string correctly and save it as an environment variable.
+
+```http
+   Authorization: Basic {SFCC_OAUTH_CLIENT_ID}:{SFCC_OAUTH_CLIENT_SECRET}
+```
+
+### Scope Parameter
+
+When making a request, include extra details with the scope parameter. Although roles can be added for various instances to an API client, access tokens are limited to one instance per request. Set the realm and instance IDs as environment variables, replacing the placeholders (zzte and 053) with your specific instance details, as outlined in the [Base URL and Request Formation Guide](https://developer.salesforce.com/docs/commerce/commerce-api/guide/base-url.html). Include the scope you are requesting for.
+
+```http
+ scope=SALESFORCE_COMMERCE_API:{SFCC_REALM_ID}_{SFCC_INSTANCE_ID} {SFCC_OAUTH_SCOPES}
+```
+
+### Request
+
+    ```http
+      POST https://account.demandware.com/dwsso/oauth2/access_token
+
+      Authorization: Basic {SFCC_OAUTH_CLIENT_ID}:{SFCC_OAUTH_CLIENT_SECRET}
+      Content-Type: application/x-www-form-urlencoded
+
+      grant_type=client_credentials
+      scope=SALESFORCE_COMMERCE_API:{SFCC_REALM_ID}_{SFCC_INSTANCE_ID} {SFCC_OAUTH_SCOPES}
+    ```
+
+  </TabItem>
+</Tabs>
+
+## Response
+
+A successful request returns your access token as part of a JSON object:
+
+```json
+{
+  "access_token": "eyJ0eXAiOiJKV1QiLCJraWQiOiJEMWhPUDdEODN4TjBqZWlqaTI3WWFvZFRjL0E9IiwiYWxnIjoiUlMyNTYifQ.",
+  "scope": "SALESFORCE_COMMERCE_API:zzte_053 sfcc.catalogs mail tenantFilter openId roles",
+  "token_type": "Bearer",
+  "expires_in": 1799
+}
+```
+
+### Official Documentation
+
+- Authorization for Admin APIs: [Authorization for Admin APIs](https://developer.salesforce.com/docs/commerce/commerce-api/guide/authorization-for-admin-apis.html)
+- Base URL and Request Formation: [Base URL and Request Formation](https://developer.salesforce.com/docs/commerce/commerce-api/guide/base-url.html)

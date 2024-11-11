@@ -1,0 +1,254 @@
+---
+sidebar_position: 2
+---
+
+import Tabs from '@theme/Tabs'
+import TabItem from '@theme/TabItem'
+
+# Search Products
+
+## Purpose
+
+This endpoint is used to search for products on the SFCC instance. It is authenticated using an admin access token.
+
+## Example
+
+<Tabs>
+  <TabItem value="commerce-sdk" label="Commerce SDK">
+    ```js
+    const body = {
+      limit: 4,
+      query: { // required
+        textQuery: {
+          fields: [
+            "id",
+            "description"
+          ],
+          searchPhrase: "campaign"
+        }
+      },
+      offset: 2
+    }
+    const productSearchResult = await productsClient.searchProducts({ body });
+    ```
+  </TabItem>
+  <TabItem value="scapi" label="SCAPI">
+    ```http
+    POST /product/products/v1/organizations/{organizationId}/product-search HTTP/1.1
+    Host: {shortcode}.api.commercecloud.salesforce.com:443
+    content-type: application/json
+
+    {
+      "limit": 4,
+      "query": {
+        "textQuery": {
+          "fields": [
+            "id",
+            "description"
+          ],
+          "searchPhrase": "campaign"
+        }
+      },
+      "offset": 2
+    }
+    ```
+
+  </TabItem>
+</Tabs>
+
+## Searchable Attributes
+
+These attributes can be used in the SearchQuery.
+
+| Attribute    | Type     | Description                                         |
+| ------------ | -------- | --------------------------------------------------- |
+| id           | String   | The ID of the product                               |
+| name         | String   | The name of the product                             |
+| online       | Boolean  | Whether the product is online or offline            |
+| searchable   | Boolean  | Whether the product is searchable in the storefront |
+| validFrom    | DateTime | Date range of product online status - start         |
+| validTo      | DateTime | Date range of product online status - end           |
+| type         | Enum     | The type of the product                             |
+| creationDate | DateTime | The date the object was created                     |
+| lastModified | DateTime | The date the object was last modified               |
+| catalogId    | String   | The catalog the product is assigned to              |
+| categoryId   | String   | A category the product is assigned to               |
+
+## Sortable Properties
+
+These attributes can be used for sorting dimensions in the product search result.
+
+| Attribute    | Type     |
+| ------------ | -------- |
+| id           | String   |
+| name         | String   |
+| creationDate | DateTime |
+
+## Request
+
+### URL
+
+`GET https://{shortCode}.api.commercecloud.salesforce.com/product/shopper-products/{version}/organizations/{organizationId}/products?ids={product_ids}&siteId=RefArch`
+
+### Headers
+
+- `Authorization: Bearer {access_token}`
+- `Content-Type: application/json`
+
+### URL Parameters
+
+- `shortCode` _string_: A region-specific merchant identifier. **(required)**
+  - Retrieved from Business Manager > Administration > Salesforce Commerce API Settings > Shortcode
+  - Example: `0dnz6oep`
+- `version` _string_: API version identifier. **(required)**
+  - Example: `v1`
+- `organizationId` _string_: The identifier for the organization. **(required)**
+  - Retrieved from Business Manager > Administration > Salesforce Commerce API Settings > organization ID
+
+### Query Parameters
+
+- `siteId` _string_: The site context of the request. Used to handle site-specific product assignments and attribute values. **(required)**
+  - Example: `RefArch`
+
+## Response
+
+<Tabs>
+  <TabItem value="200" label="200">
+  Success, product search result
+  ```json
+  {
+    "limit": 2,
+    "hits": [
+      {
+        "brand": "Apple",
+        "creationDate": "2019-02-21T22:10:02.000Z",
+        "id": "apple-ipod-classic",
+        "lastModified": "2019-09-17T19:13:39.000Z",
+        "longDescription": {
+          "default": {
+            "markup": "Supports MP3, MP3 VBR, AAC, Protected AAC, Audible 2, 3 and 4, Apple Lossless and AIFF audio formats; also supports JPEG, BMP, GIF, TIFF, PSD (Mac only) and PNG image formats and H.264 (high-definition), MPEG-4 and MPEG-4 video formats",
+            "source": "Supports MP3, MP3 VBR, AAC, Protected AAC, Audible 2, 3 and 4, Apple Lossless and AIFF audio formats; also supports JPEG, BMP, GIF, TIFF, PSD (Mac only) and PNG image formats and H.264 (high-definition), MPEG-4 and MPEG-4 video formats"
+          }
+        },
+        "name": {
+          "default": "Apple iPod Classic"
+        },
+        "onlineFlag": {
+          "default": true
+        },
+        "owningCatalogId": "electronics-catalog",
+        "owningCatalogName": {
+          "default": "Electronics Master Catalog"
+        },
+        "pageDescription": {
+          "default": "This iPod delivers everything you love about iPod with added features all wrapped in a tiny 4.9 oz. package. With 120GB of storage and up to 36 hours music playback, iPod classic lets you enjoy up to 30,000 songs or 150 hours of video — or a combination — wherever you go."
+        },
+        "pageKeywords": {
+          "default": "Apple, iPod, iPod Classic, MP3, Music Player"
+        },
+        "pageTitle": {
+          "default": "Apple iPod Nano"
+        },
+        "searchable": {
+          "default": true
+        },
+        "shortDescription": {
+          "default": {
+            "markup": "This iPod delivers everything you love about iPod with added features all wrapped in a tiny 4.9 oz. package. With 120GB of storage and up to 36 hours music playback, iPod classic lets you enjoy up to 30,000 songs or 150 hours of video — or a combination — wherever you go.",
+            "source": "This iPod delivers everything you love about iPod with added features all wrapped in a tiny 4.9 oz. package. With 120GB of storage and up to 36 hours music playback, iPod classic lets you enjoy up to 30,000 songs or 150 hours of video — or a combination — wherever you go."
+          }
+        },
+        "type": {
+          "master": true
+        }
+      },
+      {
+        "brand": "Apple",
+        "creationDate": "2019-09-04T16:07:43.000Z",
+        "id": "apple-ipod-classic-1",
+        "lastModified": "2019-09-04T16:19:03.000Z",
+        "longDescription": {
+          "default": {
+            "markup": "Supports MP3, MP3 VBR, AAC, Protected AAC, Audible 2, 3 and 4, Apple Lossless and AIFF audio formats; also supports JPEG, BMP, GIF, TIFF, PSD (Mac only) and PNG image formats and H.264 (high-definition), MPEG-4 and MPEG-4 video formats",
+            "source": "Supports MP3, MP3 VBR, AAC, Protected AAC, Audible 2, 3 and 4, Apple Lossless and AIFF audio formats; also supports JPEG, BMP, GIF, TIFF, PSD (Mac only) and PNG image formats and H.264 (high-definition), MPEG-4 and MPEG-4 video formats"
+          }
+        },
+        "name": {
+          "default": "Apple iPod Classic"
+        },
+        "onlineFlag": {
+          "default": false
+        },
+        "owningCatalogId": "electronics-catalog",
+        "owningCatalogName": {
+          "default": "Electronics Master Catalog"
+        },
+        "pageDescription": {
+          "default": "This iPod delivers everything you love about iPod with added features all wrapped in a tiny 4.9 oz. package. With 120GB of storage and up to 36 hours music playback, iPod classic lets you enjoy up to 30,000 songs or 150 hours of video — or a combination — wherever you go."
+        },
+        "pageKeywords": {
+          "default": "Apple, iPod, iPod Classic, MP3, Music Player"
+        },
+        "pageTitle": {
+          "default": "Apple iPod Nano"
+        },
+        "searchable": {
+          "default": false
+        },
+        "shortDescription": {
+          "default": {
+            "markup": "This iPod delivers everything you love about iPod with added features all wrapped in a tiny 4.9 oz. package. With 120GB of storage and up to 36 hours music playback, iPod classic lets you enjoy up to 30,000 songs or 150 hours of video — or a combination — wherever you go.",
+            "source": "This iPod delivers everything you love about iPod with added features all wrapped in a tiny 4.9 oz. package. With 120GB of storage and up to 36 hours music playback, iPod classic lets you enjoy up to 30,000 songs or 150 hours of video — or a combination — wherever you go."
+          }
+        },
+        "type": {
+          "variationGroup": true,
+          "master": false
+        }
+      }
+    ],
+    "query": {
+      "textQuery": {
+        "fields": [
+          "id"
+        ],
+        "searchPhrase": "apple-ipod-classic"
+      }
+    },
+    "offset": 0,
+    "total": 2
+  }
+  ```
+  </TabItem>
+  <TabItem value="400" label="400">
+  Bad Request, invalid query parameters
+
+```json
+{
+  "title": "Unqueryable Field",
+  "type": "https://api.commercecloud.salesforce.com/documentation/error/v1/errors/unqueryable-field",
+  "detail": "The field 'link' can't be queried.",
+  "field": "link"
+}
+```
+
+  </TabItem>
+  <TabItem value="401" label="401">
+  Missing or invalid client ID or access token
+  ```json
+  {
+    "title": "Invalid Access Token",
+    "type": "https://api.commercecloud.salesforce.com/documentation/error/v1/errors/invalid-access-token",
+    "detail": "The request is unauthorized, the access token is invalid.",
+    "accessToken": "hbGciOiJIUzI1NiIsInR5cCI6Ikp"
+  }
+  ```
+  </TabItem>
+</Tabs>
+
+## References
+
+### Official Documentation
+
+- commerce-sdk: [Product.Products.searchProducts](https://salesforcecommercecloud.github.io/commerce-sdk/classes/product.products.html#searchproducts)
+- SCAPI: [searchProducts](https://developer.salesforce.com/docs/commerce/commerce-api/references/products?meta=searchProducts)
