@@ -1,0 +1,25 @@
+{
+  "name": "@oriuminc/contentful-cli-app",
+  "version": "0.0.0",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "list-spaces": "env-cmd -x -f ./.env.local contentful space list --management-token \\$MANAGEMENT_TOKEN",
+    "list-environments": "env-cmd -x -f ./.env.local contentful space environment list --space-id \\$SPACE_ID --management-token \\$MANAGEMENT_TOKEN",
+    "create-space": "env-cmd -x -f ./.env.local contentful space create --management-token \\$MANAGEMENT_TOKEN",
+    "create-environment": "env-cmd -x -f ./.env.local contentful space environment create --space-id \\$SPACE_ID --management-token \\$MANAGEMENT_TOKEN",
+    "export-full": "env-cmd -x -f ./.env.local contentful space export --save-file --space-id \\$SPACE_ID --management-token \\$MANAGEMENT_TOKEN",
+    "export-content-model": "env-cmd -x -f ./.env.local contentful space export --export-dir \\$CONTENT_MODEL_DIR --skip-content --save-file --space-id \\$SPACE_ID --management-token \\$MANAGEMENT_TOKEN",
+    "export-content": "env-cmd -x -f ./.env.local contentful space export --export-dir \\$CONTENT_DIR --content-only --save-file --space-id \\$SPACE_ID --management-token \\$MANAGEMENT_TOKEN",
+    "import-full": "env-cmd -x -f ./.env.local contentful space import --space-id \\$SPACE_ID --environment-id \\$ENVIRONMENT_ID --management-token \\$MANAGEMENT_TOKEN",
+    "import-content-model": "env-cmd -x -f ./.env.local contentful space import --content-model-only --space-id \\$SPACE_ID --environment-id \\$ENVIRONMENT_ID --management-token \\$MANAGEMENT_TOKEN",
+    "import-content": "env-cmd -x -f ./.env.local contentful space import --skip-content-model --space-id \\$SPACE_ID --environment-id \\$ENVIRONMENT_ID --management-token \\$MANAGEMENT_TOKEN",
+    "test": "pnpm -w run test --selectProjects scripts/contentful-cli-app",
+    "test:watch": "pnpm -w run test --watch --selectProjects scripts/contentful-cli-app"
+  },
+  "dependencies": {
+    "contentful-cli": "3.1.43",
+    "env-cmd": "10.1.0",
+    "ts-node": "10.9.2"
+  }
+}
