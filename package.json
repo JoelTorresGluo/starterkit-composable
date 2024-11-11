@@ -1,0 +1,45 @@
+{
+  "name": "@oriuminc/contentful",
+  "version": "3.1.7-canary.1",
+  "license": "SEE LICENSE IN LICENSE.md",
+  "private": true,
+  "sideEffects": false,
+  "scripts": {
+    "ts": "tsc --noEmit --incremental",
+    "lint": "eslint \"./src/**/*.{js,ts,tsx}\"",
+    "test": "pnpm -w run test --selectProjects @oriuminc/contentful",
+    "test:watch": "pnpm -w run test --selectProjects @oriuminc/contentful --watch"
+  },
+  "peerDependencies": {
+    "@chakra-ui/icons": "2.1.1",
+    "@chakra-ui/react": "2.8.2",
+    "@tanstack/react-query": "4.22.4",
+    "framer-motion": "6.5.1",
+    "instantsearch.js": "4.73.4",
+    "next": "14.2.5",
+    "next-seo": "5.1.0",
+    "react": "18.3.1"
+  },
+  "dependencies": {
+    "@contentful/live-preview": "4.3.0",
+    "@contentful/rich-text-html-renderer": "16.6.8",
+    "@contentful/rich-text-react-renderer": "15.22.9",
+    "@oriuminc/base": "workspace:*",
+    "@oriuminc/cms-generic": "workspace:*",
+    "@oriuminc/commerce-generic": "workspace:*",
+    "@oriuminc/templates": "workspace:*",
+    "@oriuminc/ui": "workspace:*",
+    "contentful": "10.6.12",
+    "react-dom": "18.3.1",
+    "react-intl": "6.6.8"
+  },
+  "devDependencies": {
+    "@contentful/rich-text-types": "16.8.3",
+    "@oriuminc/eslint-config": "workspace:*",
+    "@types/node": "20.14.14",
+    "@types/react": "18.3.1",
+    "@types/react-dom": "18.3.0",
+    "tsconfig": "workspace:*",
+    "typescript": "5.3.3"
+  }
+}
