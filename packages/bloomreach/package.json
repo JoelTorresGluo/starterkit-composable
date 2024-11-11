@@ -1,0 +1,21 @@
+{
+  "name": "@oriuminc/bloomreach",
+  "version": "1.0.0",
+  "license": "SEE LICENSE IN LICENSE.md",
+  "private": true,
+  "sideEffects": false,
+  "scripts": {
+    "ts": "tsc --noEmit --incremental",
+    "lint": "eslint \"./src/**/*.{js,ts,tsx}\"",
+    "test": "pnpm -w run test --selectProjects @oriuminc/bloomreach",
+    "test:watch": "pnpm -w run test --selectProjects @oriuminc/bloomreach --watch"
+  },
+  "dependencies": {
+    "@oriuminc/base": "workspace:*"
+  },
+  "devDependencies": {
+    "@oriuminc/eslint-config": "workspace:*",
+    "tsconfig": "workspace:*",
+    "typescript": "5.3.3"
+  }
+}
