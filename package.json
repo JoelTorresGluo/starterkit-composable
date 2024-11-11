@@ -1,0 +1,45 @@
+{
+  "name": "@oriuminc/commercetools-utils",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Utilities for new commercetools projects",
+  "main": "index.js",
+  "scripts": {
+    "commercetools:config-project": "ts-node src/commercetools.config-project.ts",
+    "commercetools:convert-csvToJson": "ts-node src/commercetools.convert-csvToJson.ts",
+    "commercetools:build-products": "ts-node src/commercetools.build-products.ts",
+    "commercetools:push-products": "ts-node src/commercetools.push-products.ts",
+    "algolia:build-indexes": "ts-node src/algolia.build-indexes.ts",
+    "algolia:push-products": "ts-node src/algolia.push-products.ts",
+    "bloomreach:push-products-production": "ts-node src/bloomreach.push-products.ts --prodcatalog",
+    "test": "pnpm -w run test --selectProjects scripts/commercetools-utils",
+    "test:watch": "pnpm -w run test --watch --selectProjects scripts/commercetools-utils"
+  },
+  "author": "Orium (https://orium.com)",
+  "license": "MIT",
+  "devDependencies": {
+    "@swc/cli": "0.1.57",
+    "@swc/core": "1.7.3",
+    "@types/lodash": "4.14.194",
+    "@types/node": "20.14.14",
+    "@types/yargs": "17.0.32",
+    "tsconfig": "workspace:*",
+    "typescript": "5.3.3"
+  },
+  "dependencies": {
+    "@inquirer/prompts": "5.3.2",
+    "@oriuminc/algolia": "workspace:*",
+    "@oriuminc/bloomreach": "workspace:*",
+    "@oriuminc/commercetools": "workspace:*",
+    "@swc/helpers": "0.5.12",
+    "algoliasearch": "4.23.3",
+    "axios": "1.6.0",
+    "bottleneck": "2.19.5",
+    "csv-parse": "5.3.0",
+    "dotenv": "16.0.1",
+    "jpeg-js": "0.4.4",
+    "lodash": "4.17.21",
+    "ts-node": "10.9.2",
+    "yargs": "17.7.2"
+  }
+}
