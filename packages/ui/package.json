@@ -1,0 +1,40 @@
+{
+  "name": "@oriuminc/ui",
+  "version": "3.1.7-canary.1",
+  "license": "SEE LICENSE IN LICENSE.md",
+  "private": true,
+  "sideEffects": false,
+  "scripts": {
+    "ts": "tsc --noEmit --incremental",
+    "lint": "eslint \"./src/**/*.{js,ts,tsx}\"",
+    "test": "pnpm -w run test --selectProjects @oriuminc/ui",
+    "test:watch": "pnpm -w run test --selectProjects @oriuminc/ui --watch",
+    "format": "prettier --write ."
+  },
+  "peerDependencies": {
+    "@chakra-ui/icons": "2.1.1",
+    "@chakra-ui/next-js": "2.2.0",
+    "@chakra-ui/react": "2.8.2",
+    "@chakra-ui/theme-tools": "2.0.9",
+    "@emotion/react": "11.13.0",
+    "@emotion/styled": "11.13.0",
+    "framer-motion": "6.5.1",
+    "next": "14.2.5",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "react-hook-form": "7.52.1",
+    "react-icons": "5.3.0"
+  },
+  "devDependencies": {
+    "@oriuminc/eslint-config": "workspace:*",
+    "@types/react": "18.3.1",
+    "@types/react-dom": "18.3.0",
+    "tsconfig": "workspace:*"
+  },
+  "dependencies": {
+    "@oriuminc/base": "workspace:*",
+    "keen-slider": "6.6.13",
+    "react-focus-lock": "2.9.4",
+    "react-intl": "6.6.8"
+  }
+}
