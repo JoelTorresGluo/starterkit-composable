@@ -1,0 +1,49 @@
+{
+  "name": "@oriuminc/commercetools",
+  "version": "3.1.1",
+  "license": "SEE LICENSE IN LICENSE.md",
+  "private": true,
+  "sideEffects": false,
+  "scripts": {
+    "ts": "tsc --noEmit --incremental",
+    "lint": "eslint \"./src/**/*.{js,ts,tsx}\"",
+    "codegen": "cp ./next-auth.d.ts ./src/codegen && tsc --project ./src/codegen/tsconfig.json && graphql-codegen --config src/codegen/codegen.json",
+    "test": "pnpm -w run test --selectProjects @oriuminc/commercetools",
+    "test:watch": "pnpm -w run test --selectProjects @oriuminc/commercetools --watch"
+  },
+  "peerDependencies": {
+    "@hookform/resolvers": "2.9.11",
+    "@tanstack/react-query": "4.22.4",
+    "@tanstack/react-query-devtools": "4.22.4",
+    "next": "14.2.5",
+    "next-auth": "4.24.7",
+    "nookies": "2.5.2",
+    "react": "18.3.1",
+    "react-hook-form": "7.52.1",
+    "react-icons": "5.3.0",
+    "superjson": "1.9.1"
+  },
+  "dependencies": {
+    "@commercetools/platform-sdk": "7.17.0",
+    "@commercetools/sdk-client-v2": "2.5.0",
+    "@oriuminc/analytics": "workspace:*",
+    "@oriuminc/base": "workspace:*",
+    "@oriuminc/cms-generic": "workspace:*",
+    "@oriuminc/commerce-generic": "workspace:*",
+    "@types/qs": "6.9.7",
+    "axios": "1.6.0",
+    "qs": "6.10.3"
+  },
+  "devDependencies": {
+    "@oriuminc/eslint-config": "workspace:*",
+    "@tanstack/react-query": "4.22.4",
+    "@tanstack/react-query-devtools": "4.22.4",
+    "@types/node": "20.14.14",
+    "@types/react": "18.3.1",
+    "@types/react-dom": "18.3.0",
+    "dotenv": "16.0.3",
+    "prettier": "2.7.1",
+    "tsconfig": "workspace:*",
+    "typescript": "5.3.3"
+  }
+}
