@@ -1,0 +1,29 @@
+{
+  "name": "@oriuminc/cms-generic",
+  "version": "3.1.7-canary.1",
+  "license": "SEE LICENSE IN LICENSE.md",
+  "private": true,
+  "sideEffects": false,
+  "scripts": {
+    "ts": "tsc --noEmit --incremental",
+    "lint": "eslint \"./src/**/*.{js,ts,tsx}\"",
+    "test": "pnpm -w run test --selectProjects @oriuminc/cms-generic",
+    "test:watch": "pnpm -w run test --selectProjects @oriuminc/cms-generic --watch"
+  },
+  "peerDependencies": {
+    "@tanstack/react-query": "4.22.4"
+  },
+  "dependencies": {
+    "@oriuminc/base": "workspace:*",
+    "next": "14.2.14",
+    "zod": "3.20.2"
+  },
+  "devDependencies": {
+    "@oriuminc/eslint-config": "workspace:*",
+    "@types/node": "20.14.14",
+    "@types/react": "18.3.1",
+    "@types/react-dom": "18.3.0",
+    "tsconfig": "workspace:*",
+    "typescript": "5.3.3"
+  }
+}
