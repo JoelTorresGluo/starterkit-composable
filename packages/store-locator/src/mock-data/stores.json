@@ -1,0 +1,635 @@
+[
+  {
+    "id": "1",
+    "image_cover": {
+      "src": "https://fastly.picsum.photos/id/129/800/500.jpg?hmac=yTBnaliZRSWTktGIJOZj2IJ6jKEKuGIhud2qxpJSaMU",
+      "alt": "Cover Image"
+    },
+    "image_gallery": [
+      {
+        "src": "https://fastly.picsum.photos/id/979/800/500.jpg?hmac=1o_E8Zt6Ox_dQmnXj3sZrluqavykanPC409l-tVfcks",
+        "alt": "Image 1"
+      },
+      {
+        "src": "https://fastly.picsum.photos/id/107/800/500.jpg?hmac=a5IkNdPK3JYCXcBa7MA2q8efy0pmK9CpNVXhFf6G-d4",
+        "alt": "Image 2"
+      },
+      {
+        "src": "https://fastly.picsum.photos/id/129/800/500.jpg?hmac=yTBnaliZRSWTktGIJOZj2IJ6jKEKuGIhud2qxpJSaMU",
+        "alt": "Image 3"
+      },
+      {
+        "src": "https://fastly.picsum.photos/id/13/800/500.jpg?hmac=ExeWo0XZOPZypzsZXZIJUXdKBe8Aav33FG0r0R7FO2M",
+        "alt": "Image 4"
+      }
+    ],
+    "title": "Cafe Oro di Napoli",
+    "description": "Specialty coffee drinks made with house-roasted beans are poured, plus light fare & baked goods.",
+    "_geoloc": {
+      "lat": 43.65134681706225,
+      "lng": -79.37212108612371
+    },
+    "address1": "75 Jarvis St",
+    "address2": "",
+    "city": "Toronto",
+    "state_or_province": "Ontario",
+    "country_code": "CA",
+    "postal_code": "ON M5C 2H1",
+    "phone": "+14163157979",
+    "is_home": true,
+    "is_curbside_pickup_available": true,
+    "timezone": "America/Vancouver",
+    "service_options": ["Delivery", "Takeaway", "Dine-in"],
+    "offerings": [
+      "Alcohol",
+      "Beer",
+      "Cocktails",
+      "Coffee",
+      "Small plates",
+      "Spirits",
+      "Wine"
+    ],
+    "dining_options": ["Lunch", "Dinner", "Dessert", "Seating"],
+    "open_hours": {
+      "Mon": [
+        {
+          "open": "09:00",
+          "close": "16:00"
+        }
+      ],
+      "Tue": [
+        {
+          "open": "09:00",
+          "close": "21:00"
+        }
+      ],
+      "Wed": [
+        {
+          "open": "09:00",
+          "close": "16:30"
+        }
+      ],
+      "Thu": [
+        {
+          "open": "09:00",
+          "close": "21:00"
+        }
+      ],
+      "Fri": [
+        {
+          "open": "09:00",
+          "close": "21:00"
+        }
+      ],
+      "Sat": [
+        {
+          "open": "09:00",
+          "close": "21:00"
+        }
+      ],
+      "Sun": [
+        {
+          "open": "09:00",
+          "close": "21:00"
+        }
+      ]
+    },
+    "open_overrides": {
+      "2023-05-17": [
+        {
+          "open": "09:00",
+          "close": "16:00"
+        },
+        {
+          "open": "16:45",
+          "close": "17:10"
+        }
+      ]
+    }
+  },
+  {
+    "id": "2",
+    "title": "Fahrenheit Coffee",
+    "description": "Specialty coffee drinks made with house-roasted beans are poured, plus light fare & baked goods.",
+    "_geoloc": {
+      "lat": 43.65224074294937,
+      "lng": -79.37113788066947
+    },
+    "address1": "120 Lombard St",
+    "address2": "",
+    "city": "Toronto",
+    "state_or_province": "Ontario",
+    "country_code": "CA",
+    "postal_code": "ON M5C 3H5",
+    "phone": "+16478961774",
+    "is_curbside_pickup_available": true,
+    "timezone": "America/Vancouver",
+    "service_options": ["Delivery", "Takeaway", "Dine-in"],
+    "offerings": ["Coffee", "Organic dishes", "Quick bite"],
+    "dining_options": ["Dessert"],
+    "open_hours": {
+      "Mon": [
+        {
+          "open": "09:00",
+          "close": "18:00"
+        }
+      ],
+      "Tue": [
+        {
+          "open": "09:00",
+          "close": "21:00"
+        }
+      ],
+      "Wed": [
+        {
+          "open": "09:00",
+          "close": "18:00"
+        }
+      ],
+      "Thu": [
+        {
+          "open": "09:00",
+          "close": "21:00"
+        }
+      ],
+      "Fri": [
+        {
+          "open": "09:00",
+          "close": "21:00"
+        }
+      ],
+      "Sat": [
+        {
+          "open": "09:00",
+          "close": "21:00"
+        }
+      ],
+      "Sun": [
+        {
+          "open": "09:00",
+          "close": "21:00"
+        }
+      ]
+    }
+  },
+  {
+    "id": "3",
+    "title": "The George Street Diner",
+    "description": "Comfort food is on the menu at this classic diner, complete with red booths & counter seating.",
+    "_geoloc": {
+      "lat": 43.653059773312165,
+      "lng": -79.37142249277464
+    },
+    "address1": "129 George St",
+    "address2": "",
+    "city": "Toronto",
+    "state_or_province": "Ontario",
+    "country_code": "CA",
+    "postal_code": "ON M5C 2M6",
+    "phone": "+14168627676",
+    "service_options": [
+      "Outdoor seating",
+      "Kerbside pickup",
+      "No-contact delivery",
+      "Delivery",
+      "Takeaway",
+      "Dine-in"
+    ],
+    "offerings": [
+      "Alcohol",
+      "Beer",
+      "Cocktails",
+      "Coffee",
+      "Organic dishes",
+      "Quick bite",
+      "Spirits",
+      "Vegetarian options",
+      "Wine"
+    ],
+    "dining_options": [
+      "Breakfast",
+      "Brunch",
+      "Lunch",
+      "Catering",
+      "Counter service",
+      "Dessert",
+      "Seating"
+    ],
+    "open_hours": {
+      "Mon": [
+        {
+          "open": "09:00",
+          "close": "18:00"
+        }
+      ],
+      "Tue": [
+        {
+          "open": "09:00",
+          "close": "21:00"
+        }
+      ],
+      "Wed": [
+        {
+          "open": "09:00",
+          "close": "16:30"
+        }
+      ],
+      "Thu": [
+        {
+          "open": "09:00",
+          "close": "21:00"
+        }
+      ],
+      "Fri": [
+        {
+          "open": "09:00",
+          "close": "21:00"
+        }
+      ],
+      "Sat": [
+        {
+          "open": "09:00",
+          "close": "21:00"
+        }
+      ],
+      "Sun": [
+        {
+          "open": "09:00",
+          "close": "21:00"
+        }
+      ]
+    }
+  },
+  {
+    "id": "4",
+    "title": "Pasaj",
+    "description": "Istanbul-style sweet & savoury pastries, breads & brunch in an elegant, glass-enclosed space.",
+    "_geoloc": {
+      "lat": 43.66334074374682,
+      "lng": -79.33735083766429
+    },
+    "address1": "1100 Queen St E",
+    "address2": "",
+    "city": "Toronto",
+    "state_or_province": "Ontario",
+    "country_code": "CA",
+    "postal_code": "ON M4M 1K8",
+    "phone": "+14163157979",
+    "service_options": ["Outdoor seating", "Takeaway", "Dine-in", "Delivery"],
+    "offerings": [
+      "Alcohol",
+      "Cocktails",
+      "Coffee",
+      "Healthy options",
+      "Kids' menu",
+      "Vegetarian options",
+      "Wine"
+    ],
+    "dining_options": [
+      "Breakfast",
+      "Lunch",
+      "Dinner",
+      "Brunch",
+      "Seating",
+      "Dessert"
+    ]
+  },
+  {
+    "id": "5",
+    "title": "Descendant Detroit Style Pizza",
+    "description": "Motor City–inspired pies with thick crusts served in tiny digs with a distressed-chic feel.",
+    "_geoloc": {
+      "lat": 43.66432371351755,
+      "lng": -79.33363489934491
+    },
+    "address1": "1168 Queen St E",
+    "address2": "",
+    "city": "Toronto",
+    "state_or_province": "Ontario",
+    "country_code": "CA",
+    "postal_code": "ON M4M 1L4",
+    "phone": "+16473471168",
+    "service_options": [
+      "No-contact delivery",
+      "Delivery",
+      "Takeaway",
+      "Dine-in"
+    ],
+    "offerings": ["Alcohol", "Beer", "Quick bite", "Wine"],
+    "dining_options": ["Lunch", "Dinner"]
+  },
+  {
+    "id": "6",
+    "title": "Chiang Mai Danforth",
+    "description": "",
+    "_geoloc": {
+      "lat": 43.67841958062108,
+      "lng": -79.35225440006798
+    },
+    "address1": "353 Danforth Ave",
+    "address2": "",
+    "city": "Toronto",
+    "state_or_province": "Ontario",
+    "country_code": "CA",
+    "postal_code": "ON M4K 1N7",
+    "phone": "+16473418424",
+    "service_options": [
+      "Kerbside pickup",
+      "Delivery",
+      "Takeaway",
+      "Dine-in",
+      "No-contact delivery"
+    ],
+    "offerings": [
+      "Alcohol",
+      "Beer",
+      "Cocktails",
+      "Coffee",
+      "Healthy options",
+      "Small plates",
+      "Spirits",
+      "Vegan options",
+      "Vegetarian options",
+      "Wine"
+    ],
+    "dining_options": ["Lunch", "Dinner", "Dessert", "Seating"]
+  },
+  {
+    "id": "7",
+    "title": "The Wren",
+    "description": "Rotating taps of local craft brews & clever Southern chow in a quaint, ranch-style watering hole.",
+    "_geoloc": {
+      "lat": 43.684461488647024,
+      "lng": -79.32726784400465
+    },
+    "address1": "1382 Danforth Ave",
+    "address2": "",
+    "city": "Toronto",
+    "state_or_province": "Ontario",
+    "country_code": "CA",
+    "postal_code": "ON M4J 1M9",
+    "phone": "+16477481382",
+    "service_options": ["Outdoor seating", "Takeaway", "Dine-in"],
+    "offerings": [
+      "Alcohol",
+      "Beer",
+      "Cocktails",
+      "Food",
+      "Food at bar",
+      "Spirits",
+      "Wine"
+    ],
+    "dining_options": ["Seating"]
+  },
+  {
+    "id": "8",
+    "title": "Scaramouche Restaurant",
+    "description": "Sophisticated French haute cuisine in an upscale space with skyline views & a more casual bistro.",
+    "_geoloc": {
+      "lat": 43.685500742942764,
+      "lng": -79.40202358540685
+    },
+    "address1": "75 Jarvis St",
+    "address2": "",
+    "city": "Toronto",
+    "state_or_province": "Ontario",
+    "country_code": "CA",
+    "postal_code": "ON M5C 2H1",
+    "phone": "+14163157979",
+    "service_options": ["Dine-in"],
+    "offerings": [
+      "Alcohol",
+      "Beer",
+      "Cocktails",
+      "Coffee",
+      "Healthy options",
+      "Spirits",
+      "Vegetarian options",
+      "Wine"
+    ],
+    "dining_options": ["Dinner", "Dessert", "Seating"]
+  },
+  {
+    "id": "9",
+    "title": "Tamasha - Indian Resto Bar",
+    "description": "Easygoing eatery with a Bollywood theme offering Indian fusion food & cocktails.",
+    "_geoloc": {
+      "lat": 43.70019651733329,
+      "lng": -79.39129624191828
+    },
+    "address1": "1835 Yonge St Unit 101",
+    "address2": "",
+    "city": "Toronto",
+    "state_or_province": "Ontario",
+    "country_code": "CA",
+    "postal_code": "ON M4S 1X8",
+    "phone": "+16475084455",
+    "service_options": [
+      "Outdoor seating",
+      "Delivery",
+      "Takeaway",
+      "Dine-in",
+      "No-contact delivery"
+    ],
+    "offerings": [
+      "Alcohol",
+      "Beer",
+      "Cocktails",
+      "Coffee",
+      "Dancing",
+      "Food",
+      "Food at bar",
+      "Happy-hour food",
+      "Late-night food",
+      "Small plates",
+      "Spirits",
+      "Vegetarian options",
+      "Wine"
+    ],
+    "dining_options": ["Lunch", "Dinner", "Dessert", "Seating", "Catering"]
+  },
+  {
+    "id": "10",
+    "title": "Mandarin Restaurant",
+    "description": "Extensive buffet in a casual space offering local & Chinese dishes, as well as sushi.",
+    "_geoloc": {
+      "lat": 43.73532664741246,
+      "lng": -79.27592619652803
+    },
+    "address1": "2206 Eglinton Ave E",
+    "address2": "",
+    "city": "Toronto",
+    "state_or_province": "Ontario",
+    "country_code": "CA",
+    "postal_code": "ON M1L 4S7",
+    "phone": "+14162881177",
+    "service_options": ["Delivery", "Takeaway", "Dine-in"],
+    "offerings": [
+      "Alcohol",
+      "All you can eat",
+      "Beer",
+      "Cocktails",
+      "Coffee",
+      "Healthy options",
+      "Salad bar",
+      "Small plates",
+      "Spirits",
+      "Vegetarian options",
+      "Wine"
+    ],
+    "dining_options": ["Lunch", "Dinner", "Dessert", "Seating"]
+  },
+
+  {
+    "id": "11",
+    "title": "Terroni",
+    "description": "Italian restaurant",
+    "_geoloc": {
+      "lat": 43.68261365911617,
+      "lng": -79.39124445201553
+    },
+    "address1": "1095 Yonge St",
+    "address2": "",
+    "city": "Toronto",
+    "state_or_province": "Ontario",
+    "country_code": "CA",
+    "postal_code": "ON M4W 2L8",
+    "phone": "+14163157979",
+    "service_options": ["Delivery", "Takeaway", "Dine-in"],
+    "offerings": [
+      "Alcohol",
+      "Beer",
+      "Cocktails",
+      "Coffee",
+      "Healthy options",
+      "Kids' menu",
+      "Late-night food",
+      "Organic dishes",
+      "Small plates",
+      "Spirits",
+      "Vegetarian options",
+      "Win"
+    ],
+    "dining_options": ["Brunch", "Lunch", "Dinner", "Dessert", "Seating"]
+  },
+  {
+    "id": "12",
+    "title": "Dutch Dreams",
+    "description": "Ice cream shop",
+    "_geoloc": {
+      "lat": 43.683237290751386,
+      "lng": -79.41883962298245
+    },
+    "address1": "75 Jarvis St",
+    "address2": "",
+    "city": "Toronto",
+    "state_or_province": "Ontario",
+    "country_code": "CA",
+    "postal_code": "ON M5C 2H1",
+    "phone": "+14163157979",
+    "service_options": ["Kerbside pickup", "Takeaway"],
+    "offerings": ["Coffee"],
+    "dining_options": ["Dessert"]
+  },
+  {
+    "id": "13",
+    "title": "MotiMahal Restaurant",
+    "description": "Long-standing spot doling out Indian fare in simple digs, including saag panir & chicken tikka.",
+    "_geoloc": {
+      "lat": 43.683477603137376,
+      "lng": -79.33255683827254
+    },
+    "address1": "75 Jarvis St",
+    "address2": "",
+    "city": "Toronto",
+    "state_or_province": "Ontario",
+    "country_code": "CA",
+    "postal_code": "ON M5C 2H1",
+    "phone": "+14163157979",
+    "service_options": [
+      "No-contact delivery",
+      "Delivery",
+      "Takeaway",
+      "Dine-in"
+    ],
+    "offerings": [
+      "Healthy options",
+      "Small plates",
+      "Vegan options",
+      "Vegetarian options"
+    ],
+    "dining_options": [
+      "Breakfast",
+      "Brunch",
+      "Lunch",
+      "Dinner",
+      "Catering",
+      "Dessert",
+      "Seating"
+    ]
+  },
+  {
+    "id": "14",
+    "title": "Maker Pizza Avenue",
+    "description": "Pizza takeaway",
+    "_geoloc": {
+      "lat": 43.72276324486825,
+      "lng": -79.41324929836077
+    },
+    "address1": "1537 Avenue Rd",
+    "address2": "",
+    "city": "Toronto",
+    "state_or_province": "Ontario",
+    "country_code": "CA",
+    "postal_code": "ON M5M 3X3",
+    "phone": "+14167822000",
+    "service_options": [
+      "Outdoor seating",
+      "Kerbside pickup",
+      "Delivery",
+      "Takeaway",
+      "Dine-in"
+    ],
+    "offerings": ["Late-night food"],
+    "dining_options": ["Lunch", "Dinner", "Dessert", "Catering"]
+  },
+  {
+    "id": "15",
+    "title": "Miller Tavern",
+    "description": "Steak house. Time-tested restaurant serving seafood, chops & other gourmet comfort food, plus a robust wine list.",
+    "_geoloc": {
+      "lat": 43.74390794527251,
+      "lng": -79.40277395979854
+    },
+    "address1": "75 Jarvis St",
+    "address2": "",
+    "city": "Toronto",
+    "state_or_province": "Ontario",
+    "country_code": "CA",
+    "postal_code": "ON M5C 2H1",
+    "phone": "+14163157979",
+    "service_options": [
+      "Outdoor seating",
+      "Kerbside pickup",
+      "No-contact delivery",
+      "Delivery",
+      "Takeaway",
+      "Dine-in"
+    ],
+    "offerings": [
+      "Alcohol",
+      "Beer",
+      "Cocktails",
+      "Coffee",
+      "Happy-hour food",
+      "Healthy options",
+      "Late-night food",
+      "Organic dishes",
+      "Quick bite",
+      "Spirits",
+      "Vegetarian options",
+      "Wine"
+    ],
+    "dining_options": ["Brunch", "Lunch", "Dinner", "Dessert", "Seating"]
+  }
+]
