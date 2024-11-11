@@ -1,5 +1,5 @@
-import { commerceProvider } from '@modules/providers/commerce'
+import { commercetoolsProvider } from '@oriuminc/commercetools'
 import { getServerSession } from 'next-auth'
 
 export const getServerAuthSession = () =>
-  getServerSession(commerceProvider.authOptions!)
+  getServerSession(commercetoolsProvider.authOptions!)

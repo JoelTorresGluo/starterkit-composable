@@ -9,8 +9,8 @@
 import { initTRPC, TRPCError } from '@trpc/server'
 import superjson from 'superjson'
 import { ZodError } from 'zod'
-import { cmsProvider } from '@modules/providers/cms'
-import { commerceProvider } from '@modules/providers/commerce'
+import { contentfulProvider } from '@oriuminc/contentful'
+import { commercetoolsProvider } from '@oriuminc/commercetools'
 import { getServerAuthSession } from '@modules/server/auth'
 
 // import { headers } from 'next/headers'
@@ -35,10 +35,10 @@ export const createTRPCContext = async ({
   staticContext = false,
 }: { ip?: string; staticContext?: boolean } = {}) => {
   const session = staticContext ? null : await getServerAuthSession() // next-auth's getServerSession will throw in static env
-  const commerceContext = await commerceProvider.getAppRouterContext({
+  const commerceContext = await commercetoolsProvider.getAppRouterContext({
     staticContext,
   })
-  const cmsContext = await cmsProvider.getContext()
+  const cmsContext = await contentfulProvider.getContext()
 
   return {
     session,

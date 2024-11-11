@@ -1,6 +1,6 @@
 'use client'
 
-import { cmsProvider } from '@modules/providers/cms'
+import { contentfulProvider } from '@oriuminc/contentful'
 
 export const useCMSPreview = ({
   previewData,
@@ -12,7 +12,7 @@ export const useCMSPreview = ({
   onExitPreview?: () => void
 }) => {
   const { isPreview, isLoadingPreview } =
-    cmsProvider.useCmsLivePreviewAppRouter?.({
+    contentfulProvider.useCmsLivePreviewAppRouter?.({
       previewData,
       onUpdatePreview,
       onExitPreview,
