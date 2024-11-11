@@ -1,0 +1,32 @@
+{
+  "name": "@oriuminc/algolia",
+  "version": "3.1.0",
+  "license": "SEE LICENSE IN LICENSE.md",
+  "private": true,
+  "sideEffects": false,
+  "scripts": {
+    "ts": "tsc --noEmit --incremental",
+    "lint": "eslint \"./src/**/*.{js,ts,tsx}\" --max-warnings 0",
+    "test": "pnpm -w run test --selectProjects @oriuminc/algolia",
+    "test:watch": "pnpm -w run test --selectProjects @oriuminc/algolia --watch"
+  },
+  "dependencies": {
+    "@oriuminc/base": "workspace:*",
+    "@oriuminc/cms-generic": "workspace:*",
+    "algoliasearch": "4.23.3",
+    "react-intl": "6.6.8",
+    "react-instantsearch": "7.12.4",
+    "search-insights": "2.13.0"
+  },
+  "devDependencies": {
+    "@oriuminc/eslint-config": "workspace:*",
+    "@types/node": "20.14.14",
+    "@types/react": "18.3.1",
+    "tsconfig": "workspace:*",
+    "typescript": "5.3.3"
+  },
+  "peerDependencies": {
+    "instantsearch.js": "4.73.4",
+    "react": "18.3.1"
+  }
+}
