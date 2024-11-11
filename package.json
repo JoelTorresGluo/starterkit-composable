@@ -1,0 +1,35 @@
+{
+  "name": "@oriuminc/stripe",
+  "version": "3.1.1",
+  "license": "SEE LICENSE IN LICENSE.md",
+  "private": true,
+  "sideEffects": false,
+  "scripts": {
+    "ts": "tsc --noEmit --incremental",
+    "lint": "eslint \"./src/**/*.{js,ts,tsx}\" --max-warnings 0",
+    "test": "pnpm -w run test --selectProjects @oriuminc/stripe",
+    "test:watch": "pnpm -w run test --selectProjects @oriuminc/stripe --watch"
+  },
+  "peerDependencies": {
+    "next": "14.2.5",
+    "react": "18.3.1"
+  },
+  "dependencies": {
+    "@oriuminc/base": "workspace:*",
+    "@oriuminc/commerce-generic": "workspace:*",
+    "@stripe/react-stripe-js": "1.16.5",
+    "@stripe/stripe-js": "1.54.2",
+    "axios": "1.6.0",
+    "qs": "6.10.3"
+  },
+  "devDependencies": {
+    "@oriuminc/eslint-config": "workspace:*",
+    "@types/node": "20.14.14",
+    "@types/qs": "6.9.7",
+    "@types/react": "18.3.1",
+    "eslint": "8.14.0",
+    "prettier": "2.7.1",
+    "tsconfig": "workspace:*",
+    "typescript": "5.3.3"
+  }
+}
