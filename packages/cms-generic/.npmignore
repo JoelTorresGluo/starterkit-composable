@@ -1,0 +1,10 @@
+.turbo/
+node_modules/
+.eslintrc.js
+.npmignore
+CHANGELOG.md
+CHANGELOG_old.md
+index.tsx
+README.md
+tsconfig.json
+tsconfig.tsbuildinfo
