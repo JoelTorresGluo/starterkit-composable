@@ -1,0 +1,30 @@
+{
+  "name": "@oriuminc/analytics",
+  "version": "3.1.1",
+  "license": "SEE LICENSE IN LICENSE.md",
+  "private": true,
+  "sideEffects": false,
+  "scripts": {
+    "ts": "tsc --noEmit --incremental",
+    "lint": "eslint \"./src/**/*.{js,ts,tsx}\" --max-warnings 0",
+    "test": "pnpm -w run test --selectProjects @oriuminc/analytics",
+    "test:watch": "pnpm -w run test --selectProjects @oriuminc/analytics --watch"
+  },
+  "peerDependencies": {
+    "next": "14.2.5",
+    "react": "18.3.1"
+  },
+  "dependencies": {
+    "@oriuminc/base": "workspace:*"
+  },
+  "devDependencies": {
+    "@oriuminc/eslint-config": "workspace:*",
+    "@types/node": "20.14.14",
+    "@types/react": "18.3.1",
+    "@types/react-dom": "18.3.0",
+    "eslint": "8.14.0",
+    "prettier": "2.7.1",
+    "tsconfig": "workspace:*",
+    "typescript": "5.3.3"
+  }
+}
