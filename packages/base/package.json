@@ -1,0 +1,40 @@
+{
+  "name": "@oriuminc/base",
+  "version": "3.1.1",
+  "license": "SEE LICENSE IN LICENSE.md",
+  "private": true,
+  "sideEffects": false,
+  "scripts": {
+    "ts": "tsc --noEmit --incremental",
+    "lint": "eslint \"./src/**/*.{js,ts,tsx}\"",
+    "test": "pnpm -w run test --selectProjects @oriuminc/base",
+    "test:watch": "pnpm -w run test --selectProjects @oriuminc/base --watch"
+  },
+  "peerDependencies": {
+    "@chakra-ui/react": "2.8.2",
+    "@chakra-ui/theme-tools": "2.0.18",
+    "@emotion/react": "11.13.0",
+    "@emotion/styled": "11.13.0",
+    "@tanstack/react-query": "4.22.4",
+    "@tanstack/react-query-devtools": "4.22.4",
+    "framer-motion": "6.5.1",
+    "next": "14.2.5",
+    "next-seo": "5.1.0",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  },
+  "devDependencies": {
+    "@oriuminc/eslint-config": "workspace:*",
+    "@types/node": "20.14.14",
+    "@types/react": "18.3.1",
+    "@types/react-dom": "18.3.0",
+    "tsconfig": "workspace:*"
+  },
+  "dependencies": {
+    "@stripe/react-stripe-js": "1.16.5",
+    "@stripe/stripe-js": "1.54.2",
+    "focus-visible": "5.2.0",
+    "react-intl": "6.6.8",
+    "zod": "3.20.2"
+  }
+}
