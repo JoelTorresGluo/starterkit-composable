@@ -8,6 +8,7 @@ import { getSlug } from './commercetools/utils/products'
 const getProductsGroupBy = (allProducts: RawProduct[], attribute: string) =>
   _.groupBy(allProducts, attribute)
 
+//function changed to addapt products
 const getAllStores = (products: RawProduct[]) =>
   products.reduce((acc: string[], product) => {
     const store = product?.seller?.toUpperCase()
