@@ -10,9 +10,8 @@ const getProductsGroupBy = (allProducts: RawProduct[], attribute: string) =>
 
 const getAllStores = (products: RawProduct[]) =>
   products.reduce((acc: string[], product) => {
-    const store = product.seller.map((seller) => seller.toUpperCase())
-
-    return _.uniq([...acc, ...store])
+    const store = product?.seller?.toUpperCase()
+    return _.uniq([...acc, store])
   }, [])
 
 const buildProductsFile = () => {

@@ -2,7 +2,7 @@
 
 /** @type {import("next-i18n-router/dist/types").Config} */
 const i18nConfig = {
-  locales: ['en-US', 'en-CA', 'fr-CA'],
+  locales: ['en-US'],
   defaultLocale: 'en-US',
   // prefixDefault: true, // Uncomment this line to prefix the default locale, ex for default 'en-US' the path would be 'storefront.com/en-US/product/123'
 }

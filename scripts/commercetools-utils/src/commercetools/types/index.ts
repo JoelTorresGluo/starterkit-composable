@@ -2,7 +2,7 @@
  * This interface should match your products.raw.json file
  */
 export interface UnprocessedRawProduct {
-  seller: string[]
+  seller: string
   type: 'wine' | 'accessories'
   name: string
   brand: string
