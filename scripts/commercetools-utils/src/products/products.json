@@ -1,0 +1,348 @@
+{
+  "stores": ["SPLASH"],
+  "transformedProducts": [
+    {
+      "productType": {
+        "name": "accessories",
+        "description": "accessories description",
+        "attributes": [
+          {
+            "type": {
+              "name": "text"
+            },
+            "isSearchable": true,
+            "inputHint": "SingleLine",
+            "name": "seller",
+            "label": {
+              "en-US": "seller",
+              "en-CA": "seller",
+              "fr-CA": "seller",
+              "es-MX": "seller"
+            },
+            "isRequired": false,
+            "attributeConstraint": "SameForAll"
+          },
+          {
+            "type": {
+              "name": "text"
+            },
+            "isSearchable": true,
+            "inputHint": "SingleLine",
+            "name": "type",
+            "label": {
+              "en-US": "type",
+              "en-CA": "type",
+              "fr-CA": "type",
+              "es-MX": "type"
+            },
+            "isRequired": false,
+            "attributeConstraint": "SameForAll"
+          },
+          {
+            "type": {
+              "name": "text"
+            },
+            "isSearchable": true,
+            "inputHint": "SingleLine",
+            "name": "brand",
+            "label": {
+              "en-US": "brand",
+              "en-CA": "brand",
+              "fr-CA": "brand",
+              "es-MX": "brand"
+            },
+            "isRequired": false,
+            "attributeConstraint": "SameForAll"
+          },
+          {
+            "type": {
+              "name": "text"
+            },
+            "isSearchable": true,
+            "inputHint": "SingleLine",
+            "name": "size",
+            "label": {
+              "en-US": "size",
+              "en-CA": "size",
+              "fr-CA": "size",
+              "es-MX": "size"
+            },
+            "isRequired": false,
+            "attributeConstraint": "SameForAll"
+          },
+          {
+            "type": {
+              "name": "text"
+            },
+            "isSearchable": true,
+            "inputHint": "SingleLine",
+            "name": "colour",
+            "label": {
+              "en-US": "colour",
+              "en-CA": "colour",
+              "fr-CA": "colour",
+              "es-MX": "colour"
+            },
+            "isRequired": false,
+            "attributeConstraint": "SameForAll"
+          },
+          {
+            "type": {
+              "name": "number"
+            },
+            "isSearchable": true,
+            "inputHint": "SingleLine",
+            "name": "rating",
+            "label": {
+              "en-US": "rating",
+              "en-CA": "rating",
+              "fr-CA": "rating",
+              "es-MX": "rating"
+            },
+            "isRequired": false,
+            "attributeConstraint": "SameForAll"
+          }
+        ]
+      },
+      "mainCategory": "accessories",
+      "products": [
+        {
+          "sku": "71",
+          "seller": "splash",
+          "type": "accessories",
+          "name": "Coravin Sparkling™",
+          "brand": "CORAVINs",
+          "size": "M",
+          "colour": "Rose Gold",
+          "price": "399",
+          "description": "Coravin Sparkling™ is the sparkling wine preservation system that allows you to open a bottle one weekend, then finish it at brunch the next. Whether it’s a pre-dinner glass of bubbly, celebrating the end of a long day, or kicking off the weekend, now you can pop any bottle of sparkling wine without hesitation. The Coravin Sparkling™ Sparkling Wine Preservation System preserves the crisp flavor and effervescence of your favorite sparkling wines for up to 4 weeks, guaranteeing that the last glass will taste just as amazing as the first.",
+          "images": [
+            "https://images.ctfassets.net/ywkw2mbs8rrw/1ELkebqEsjaL8tAMKjUfEM/8bab88c46af33d36c6637d59afd5da43/IMG-Sparkling.jpg?q=50&fm=webp&fit=crop&w=2136&h=1800"
+          ],
+          "variants": [
+            {
+              "name": "Rose12",
+              "sku": "701",
+              "price": "449",
+              "images": "https://images.ctfassets.net/ywkw2mbs8rrw/1ELkebqEsjaL8tAMKjUfEM/8bab88c46af33d36c6637d59afd5da43/IMG-Sparkling.jpg?q=50&fm=webp&fit=crop&w=2136&h=1800",
+              "size": "M",
+              "color": "Rose Gold"
+            },
+            {
+              "name": " Gold 1",
+              "sku": "702",
+              "price": "345",
+              "images": ""
+            }
+          ],
+          "rating": 2.1
+        },
+        {
+          "sku": "72",
+          "seller": "splash",
+          "type": "accessories",
+          "name": "Coravin Sparklingqw™",
+          "brand": "CORAVINs",
+          "size": "S",
+          "colour": "Gold",
+          "price": "299",
+          "description": "Pour your favorite wines without pulling the cork with the Coravin Timeless Six Preservation System. The Six System brings a new level of elegance to our Timeless Wine Preservation Systems, allowing you to preserve still wines for weeks, months, or even years. Choose from a variety of elegant color options in a high-gloss finish, metallic accents, and premium accessories. This luxury Wine Preservation System is perfect for hosts, connoisseurs, and tastemakers.",
+          "images": [
+            "https://images.ctfassets.net/ywkw2mbs8rrw/28WoFVBEBAxz0UCtSxn2gq/7fbeac704bf2735a9b9d4e8229e0a09e/IMG-Timeless-Six-Plus-Piano-Black.jpg?q=50&fm=webp&fit=crop&w=2136&h=1800"
+          ],
+          "variants": [
+            {
+              "name": "Gold1",
+              "sku": "703",
+              "price": "459",
+              "images": "https://images.ctfassets.net/ywkw2mbs8rrw/28WoFVBEBAxz0UCtSxn2gq/7fbeac704bf2735a9b9d4e8229e0a09e/IMG-Timeless-Six-Plus-Piano-Black.jpg?q=50&fm=webp&fit=crop&w=2136&h=1800",
+              "size": "S",
+              "color": "Gold"
+            },
+            {
+              "name": " G2",
+              "sku": "704",
+              "price": "100"
+            }
+          ],
+          "rating": 1.1
+        },
+        {
+          "sku": "73",
+          "seller": "splash",
+          "type": "accessories",
+          "name": "Timeless T1hree+",
+          "brand": "CORAVINs",
+          "size": "L",
+          "colour": "Sapphire Blue",
+          "price": "199",
+          "description": "Pour your favorite wines without pulling the cork with the Coravin Timeless Three Wine Preservation System. The Three System is the perfect introduction to our Timeless Wine Preservation Systems, allowing you to preserve still wines for weeks, months, or even years. Featuring a molded all-black architecture, two Coravin Pure™ Argon Capsules, two Coravin Screw Caps and a Coravin Aerator, the Three+ contains everything you need to enhance your wine experience.",
+          "images": [
+            "https://images.ctfassets.net/ywkw2mbs8rrw/2ItKs9SEJ7jqPwiPdFBfFY/c93ab577b49a00a868ef9296fa469622/IMG_Three_.jpg?q=50&fm=webp&fit=crop&w=2136&h=1800"
+          ],
+          "variants": [
+            {
+              "name": "Sapphire Blue",
+              "sku": "715",
+              "price": "319",
+              "images": "https://images.ctfassets.net/ywkw2mbs8rrw/2ItKs9SEJ7jqPwiPdFBfFY/c93ab577b49a00a868ef9296fa469622/IMG_Three_.jpg?q=50&fm=webp&fit=crop&w=2136&h=1800",
+              "size": "L",
+              "color": "Sapphire Blue"
+            }
+          ],
+          "rating": 3.5
+        },
+        {
+          "sku": "74",
+          "seller": "splash",
+          "type": "accessories",
+          "name": "Timeless Thr",
+          "brand": "CORAVINs",
+          "size": "M",
+          "colour": "Carbon Black",
+          "price": "149",
+          "description": "Pour your favorite wines without pulling the cork with the Coravin Timeless Three Wine Preservation System. The Three System is the perfect introduction to our Timeless Wine Preservation Systems, allowing you to preserve still wines for weeks, months, or even years. Featuring a molded architecture in a neutral colorway and one Coravin Pure™ Argon Capsule, the Three SL  contains the essential items to begin your wine journey.",
+          "images": [
+            "https://images.ctfassets.net/ywkw2mbs8rrw/65M6XUDfrgkJDSxrBAI2Vv/b5e634df3b48b3217f96930cb7a4d899/IMG_ThreeSL.jpg?q=50&fm=webp&fit=crop&w=2136&h=1800"
+          ],
+          "variants": [
+            {
+              "name": "Carbon Black",
+              "sku": "716",
+              "price": "319",
+              "images": "https://images.ctfassets.net/ywkw2mbs8rrw/65M6XUDfrgkJDSxrBAI2Vv/b5e634df3b48b3217f96930cb7a4d899/IMG_ThreeSL.jpg?q=50&fm=webp&fit=crop&w=2136&h=1800",
+              "size": "M",
+              "color": "Carbon Black"
+            }
+          ],
+          "rating": 3.9
+        },
+        {
+          "sku": "75",
+          "seller": "splash",
+          "type": "accessories",
+          "name": "Pivot™+",
+          "brand": "CORAVINs",
+          "size": "M",
+          "colour": "Green",
+          "price": "129",
+          "description": "The Pivot™+ Wine Preservation System combines preservation with aeration, delivering a more aromatic and flavorful wine as you pour with the included Pivot Aerator attachment. The remaining wine is then preserved for up to 4 weeks, ensuring a fresh-tasting glass when you are ready for it. Match your wine to your mood, dinner courses, or the weather, the choice is yours.",
+          "images": [
+            "https://images.ctfassets.net/ywkw2mbs8rrw/tHOgDYC49I5jIVnPFOzU5/faea35bf9e0886f41996dcde2adc1731/IMG_Pivot_.jpg?q=50&fm=webp&fit=crop&w=2136&h=1800"
+          ],
+          "variants": [
+            {
+              "name": "Green",
+              "sku": "717",
+              "price": "561",
+              "images": "https://images.ctfassets.net/ywkw2mbs8rrw/tHOgDYC49I5jIVnPFOzU5/faea35bf9e0886f41996dcde2adc1731/IMG_Pivot_.jpg?q=50&fm=webp&fit=crop&w=2136&h=1800",
+              "size": "M",
+              "color": "Green"
+            }
+          ],
+          "rating": 2.4
+        },
+        {
+          "sku": "76",
+          "seller": "splash",
+          "type": "accessories",
+          "name": "Pivot™+ 1",
+          "brand": "CORAVINs",
+          "size": "M",
+          "colour": "Yellow",
+          "price": "69.3",
+          "description": "Extend the life of your everyday wines with the Coravin® Pivot™ Wine Preservation System. Match your wine to your mood, dinner courses, or the weather. The ingenious combination of the Pivot Stopper and Device preserves the remaining bottle for up to 4 weeks, ensuring the last glass is just as amazing as the first.",
+          "images": [
+            "https://images.ctfassets.net/ywkw2mbs8rrw/p938EPeIQ4nxojhRClVJv/05b13e966725eb5ad857444cdbd111ca/IMG_Pivot_Coral.jpg?q=50&fm=webp&fit=crop&w=2136&h=1800"
+          ],
+          "variants": [
+            {
+              "name": "Yellow",
+              "sku": "718",
+              "price": "678",
+              "images": "https://images.ctfassets.net/ywkw2mbs8rrw/p938EPeIQ4nxojhRClVJv/05b13e966725eb5ad857444cdbd111ca/IMG_Pivot_Coral.jpg?q=50&fm=webp&fit=crop&w=2136&h=1800",
+              "size": "M",
+              "color": "Yellow"
+            }
+          ],
+          "rating": 2.4
+        },
+        {
+          "sku": "77",
+          "seller": "splash",
+          "type": "accessories",
+          "name": "Timeless Eleven",
+          "brand": "CORAVINs",
+          "size": "L",
+          "colour": "Blue",
+          "price": "499",
+          "description": "Timeless Eleven is the first automatic and connected Wine Preservation System. Connect with the Coravin Moments App for added controls, including custom pour speeds, System status checks, and Capsule replacement reminders. Timeless Eleven is the ultimate advancement in wine technology. This set includes key accessories, perfect for wine collectors, connoisseurs, and techies.",
+          "images": [
+            "https://images.ctfassets.net/ywkw2mbs8rrw/7ynjjN8ANOD9uAZgY60b2t/f198ba2b89808d10ff7c1626674cf55e/IMG_Model-Eleven_Wine-Collectors-Pack.png?q=50&fm=webp&fit=crop&w=2136&h=1800"
+          ],
+          "variants": [
+            {
+              "name": "Blue",
+              "sku": "719",
+              "price": "456",
+              "images": "https://images.ctfassets.net/ywkw2mbs8rrw/7ynjjN8ANOD9uAZgY60b2t/f198ba2b89808d10ff7c1626674cf55e/IMG_Model-Eleven_Wine-Collectors-Pack.png?q=50&fm=webp&fit=crop&w=2136&h=1800",
+              "size": "L",
+              "color": "Blue"
+            }
+          ],
+          "rating": 4.8
+        },
+        {
+          "sku": "78",
+          "seller": "splash",
+          "type": "accessories",
+          "name": "Timeless Elevennn1",
+          "brand": "CORAVINs",
+          "size": "S",
+          "colour": "Pink",
+          "price": "52.95",
+          "description": "Coravin Pure™ Argon Capsules power Coravin Timeless and Pivot™ Wine Preservation Systems. They are filled with pure Argon gas that pressurizes the bottle to allow wine to flow out the spout, then blankets the remaining wine once the System is removed. \\n\\nArgon Capsules are not compatible with Coravin Sparkling™.",
+          "images": [
+            "https://images.ctfassets.net/ywkw2mbs8rrw/3CdOcOZkRsxN93AqR3N75l/a8706a44b6ea89ea8084ce3025a73c55/IMG_Capsules_6pk.png?q=50&fm=webp&fit=crop&w=2136&h=1800"
+          ],
+          "variants": [
+            {
+              "name": "Pink",
+              "sku": "720",
+              "price": "890",
+              "images": "https://images.ctfassets.net/ywkw2mbs8rrw/3CdOcOZkRsxN93AqR3N75l/a8706a44b6ea89ea8084ce3025a73c55/IMG_Capsules_6pk.png?q=50&fm=webp&fit=crop&w=2136&h=1800",
+              "size": "S",
+              "color": "Pink"
+            }
+          ],
+          "rating": 1.6
+        },
+        {
+          "sku": "79",
+          "seller": "splash",
+          "type": "accessories",
+          "name": "curio",
+          "brand": "s",
+          "size": "S",
+          "colour": "Pale",
+          "price": "44.95",
+          "description": "Coravin Pure™ Sparkling CO2 Capsules power your Coravin Sparkling™ System. These replacement Capsules are filled with pure CO2, the same gas that creates bubbles in sparkling wine, to preserve its taste and effervescence for up to 4 weeks. Each Capsule preserves up to 7 standard bottles of sparkling wine.\"",
+          "images": [
+            "https://images.ctfassets.net/ywkw2mbs8rrw/4gvZ0nhpIyU6cJCaXWLz5Q/58332ce574e05c5f631c255a9770ebf0/IMG-Sparkling-Capsules-6.png?q=50&fm=webp&fit=crop&w=2136&h=1800"
+          ],
+          "variants": [
+            {
+              "name": "Pale",
+              "sku": "721",
+              "price": "250",
+              "images": "https://images.ctfassets.net/ywkw2mbs8rrw/4gvZ0nhpIyU6cJCaXWLz5Q/58332ce574e05c5f631c255a9770ebf0/IMG-Sparkling-Capsules-6.png?q=50&fm=webp&fit=crop&w=2136&h=1800",
+              "size": "S",
+              "color": "Pale"
+            }
+          ],
+          "rating": 4.9
+        }
+      ]
+    }
+  ]
+}
